@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Usuario;
 import util.MD5;
+import view.ViewCadastroUsuario;
 import view.ViewLogin;
 
 /**
@@ -28,8 +29,12 @@ public class ControllerLogin extends Controller {
     
     private void adicionaAcoesTela() {
         this.adicionaAcaoEntrarTela();
+        this.adicionaAcaoCadastroTela();
     }
     
+    /**
+     * Adiciona a ação de click de entrar no sistema
+     */
     private void adicionaAcaoEntrarTela() {
         this.viewLogin.adicionaAcaoBotaoEntrar(new ActionListener() {
             @Override
@@ -43,6 +48,19 @@ public class ControllerLogin extends Controller {
                 else {
                     getViewLogin().showMensagemDadosIncorretos();
                 }
+            }
+        });
+    }
+    
+    /**
+     * Adiciona ação de click de cadastro de usuário
+     */
+    private void adicionaAcaoCadastroTela(){
+        this.viewLogin.adicionaAcaoBotaoCadastro(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                ControllerUsuario controllerUsuario = new ControllerUsuario();
+                controllerUsuario.montaTela();
             }
         });
     }

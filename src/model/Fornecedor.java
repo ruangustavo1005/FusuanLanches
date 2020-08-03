@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Date;
+
 /**
  * Modelo de pessoa fornecedora de suprimentos
  * @author Ruan

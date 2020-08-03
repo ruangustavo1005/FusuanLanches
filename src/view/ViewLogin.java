@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 import javax.swing.JOptionPane;
 import model.Usuario;
 
@@ -9,7 +8,7 @@ import model.Usuario;
  * Tela de login do sistema
  * @author Ruan
  */
-public class ViewLogin extends javax.swing.JFrame {
+public class ViewLogin extends View {
 
     public ViewLogin() {
         initComponents();
@@ -17,6 +16,10 @@ public class ViewLogin extends javax.swing.JFrame {
 
     public void adicionaAcaoBotaoEntrar(ActionListener actionListener) {
         this.btnEntrar.addActionListener(actionListener);
+    }
+    
+    public void adicionaAcaoBotaoCadastro(ActionListener actionListener){
+        this.btnCadastrar.addActionListener(actionListener);
     }
     
     public Usuario getModelFromTela() {
@@ -52,7 +55,7 @@ public class ViewLogin extends javax.swing.JFrame {
         btnCadastrar.setText("Cadastrar-se");
         btnCadastrar.setRequestFocusEnabled(false);
 
-        jLabel3.setText("Senha");
+        jLabel3.setText("Senha:");
 
         jLabel4.setText("Login:");
 
@@ -102,36 +105,6 @@ public class ViewLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewLogin().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnEntrar;
@@ -141,4 +114,9 @@ public class ViewLogin extends javax.swing.JFrame {
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void run() {
+        new ViewLogin().setVisible(true);
+    }
 }

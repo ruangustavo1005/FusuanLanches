@@ -1,6 +1,5 @@
 package model;
 
-
 /**
  * Modelo de pessoa cliente
  * @author Ruan

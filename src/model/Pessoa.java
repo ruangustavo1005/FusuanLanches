@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Date;
+
 /**
  * Modelo padrão de pessoa
  * @author Ruan
@@ -39,7 +41,7 @@ public abstract class Pessoa {
     public String getEmail() {
         return email;
     }
-
+    
     public void setEmail(String email) {
         this.email = email;
     }
