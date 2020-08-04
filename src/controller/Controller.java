@@ -9,8 +9,10 @@ import view.View;
 public abstract class Controller {
     
 //    protected Model model;
-    protected View view;
+    protected abstract View getInstanceView();
     
-    public abstract void montaTela();
+    public void montaTela(){
+        this.getInstanceView().setVisible(true);
+    }
     
 }

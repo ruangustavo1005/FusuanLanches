@@ -4,7 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Usuario;
 import util.MD5;
+import view.View;
 import view.ViewCadastroUsuario;
+import view.ViewIndex;
 import view.ViewLogin;
 
 /**
@@ -27,6 +29,9 @@ public class ControllerLogin extends Controller {
         this.viewLogin.setVisible(true);
     }
     
+    /**
+     * Adiciona as ações na tela
+     */
     private void adicionaAcoesTela() {
         this.adicionaAcaoEntrarTela();
         this.adicionaAcaoCadastroTela();
@@ -44,6 +49,7 @@ public class ControllerLogin extends Controller {
 //                  Acho que seria mas persistir antes pra salvar os dados da pessoa, que são mais importantes.
                     usuarioLogado = usuario;
                     getViewLogin().setVisible(false);
+                    ViewIndex.getInstance().setEnabled(true);
                 }
                 else {
                     getViewLogin().showMensagemDadosIncorretos();
@@ -85,6 +91,11 @@ public class ControllerLogin extends Controller {
         }
         
         return retorno;
+    }
+
+    @Override
+    protected ViewLogin getInstanceView() {
+        return ViewLogin.getInstance();
     }
     
 }

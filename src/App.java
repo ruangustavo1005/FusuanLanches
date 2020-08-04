@@ -1,8 +1,6 @@
-import com.sun.deploy.util.StringUtils;
-import controller.ControllerLogin;
+import controller.ControllerMenu;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import view.Index;
 
 /**
  * Classe main do sistema
@@ -22,10 +20,12 @@ public class App extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        Index index = new Index();
-        index.setVisible(true);
-        ControllerLogin controllerLogin = new ControllerLogin();
-        controllerLogin.montaTela();
+        ControllerMenu controllerMenu = new ControllerMenu();
+        controllerMenu.montaTela();
+//        ViewIndex index = new ViewIndex();
+//        index.setVisible(true);
+//        ControllerLogin controllerLogin = new ControllerLogin();
+//        controllerLogin.montaTela();
     }
 
     /**

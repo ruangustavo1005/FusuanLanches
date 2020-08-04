@@ -9,6 +9,15 @@ import model.Usuario;
  * @author Ruan
  */
 public class ViewLogin extends View {
+    
+    private static ViewLogin instance;
+    
+    public static ViewLogin getInstance() {
+        if(ViewLogin.instance == null){
+            ViewLogin.instance = new ViewLogin();
+        }
+        return ViewLogin.instance;
+    }
 
     public ViewLogin() {
         initComponents();
@@ -117,6 +126,6 @@ public class ViewLogin extends View {
 
     @Override
     public void run() {
-        new ViewLogin().setVisible(true);
+        ViewLogin.getInstance().setVisible(true);
     }
 }

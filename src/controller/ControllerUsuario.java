@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Usuario;
+import view.View;
 import view.ViewCadastroUsuario;
 
 /**
@@ -42,6 +43,11 @@ public class ControllerUsuario extends Controller {
                 viewCadastroUsuario.setVisible(false);
             }
         });
+    }
+
+    @Override
+    protected ViewCadastroUsuario getInstanceView() {
+        return ViewCadastroUsuario.getInstance();
     }
 
 }

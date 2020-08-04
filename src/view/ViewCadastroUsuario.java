@@ -1,13 +1,21 @@
 package view;
 
 import java.awt.event.ActionListener;
-import model.Pessoa;
 
 /**
  * View de Cadastro do Usuário
  * @author Leonardo Alex Fusinato <leonardo.fusinato@edu.udesc.br>
  */
 public class ViewCadastroUsuario extends View {
+    
+    private static ViewCadastroUsuario instance;
+    
+    public static ViewCadastroUsuario getInstance() {
+        if(ViewCadastroUsuario.instance == null){
+            ViewCadastroUsuario.instance = new ViewCadastroUsuario();
+        }
+        return ViewCadastroUsuario.instance;
+    }
 
     public ViewCadastroUsuario() {
         initComponents();
@@ -184,6 +192,7 @@ public class ViewCadastroUsuario extends View {
 
     @Override
     public void run() {
-        new ViewCadastroUsuario().setVisible(true);
+        ViewCadastroUsuario.getInstance().setVisible(true);
     }
+    
 }
