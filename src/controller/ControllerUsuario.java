@@ -3,7 +3,6 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Usuario;
-import view.View;
 import view.ViewCadastroUsuario;
 
 /**
@@ -12,18 +11,20 @@ import view.ViewCadastroUsuario;
  */
 public class ControllerUsuario extends Controller {
     
-    private ViewCadastroUsuario viewCadastroUsuario;
+    private static ControllerUsuario instance;
     
     private Usuario usuario;
 
-    public ControllerUsuario() {
-        this.viewCadastroUsuario = new ViewCadastroUsuario();
+    private ControllerUsuario() {
         this.adicionaAcoesTela();
     }
-    
-    @Override
-    public void montaTela() {
-        this.viewCadastroUsuario.setVisible(true);
+
+    public static ControllerUsuario getInstance() {
+        if (instance == null) {
+            instance = new ControllerUsuario();
+        }
+        
+        return instance;
     }
     
     /**
@@ -37,10 +38,10 @@ public class ControllerUsuario extends Controller {
      * Adiciona a ação de cancelar na tela
      */
     public void adicionaAcaoCancelar(){
-        this.viewCadastroUsuario.adicionaAcaoBotaoCancelar(new ActionListener() {
+        this.getInstanceView().adicionaAcaoBotaoCancelar(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                viewCadastroUsuario.setVisible(false);
+                getInstanceView().setVisible(false);
             }
         });
     }

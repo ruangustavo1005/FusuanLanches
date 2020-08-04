@@ -9,16 +9,16 @@ import java.awt.event.ActionListener;
 public class ViewCadastroUsuario extends View {
     
     private static ViewCadastroUsuario instance;
+
+    private ViewCadastroUsuario() {
+        initComponents();
+    }
     
     public static ViewCadastroUsuario getInstance() {
         if(ViewCadastroUsuario.instance == null){
             ViewCadastroUsuario.instance = new ViewCadastroUsuario();
         }
         return ViewCadastroUsuario.instance;
-    }
-
-    public ViewCadastroUsuario() {
-        initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -184,11 +184,6 @@ public class ViewCadastroUsuario extends View {
     private javax.swing.JTextField txtNome;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public Object getModelFromTela() {
-        return new Object();
-    }
 
     @Override
     public void run() {

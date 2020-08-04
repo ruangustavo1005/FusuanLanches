@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import view.View;
 import view.ViewCadastroUsuario;
 import view.ViewIndex;
 
@@ -12,20 +11,20 @@ import view.ViewIndex;
  */
 public class ControllerMenu extends Controller {
 
-    private ControllerLogin controllerLogin;
+    private static ControllerMenu instance;
     
-    public ControllerMenu() {
-        this.controllerLogin = new ControllerLogin();
+    private ControllerMenu() {
         this.adicionaAcoesTela();
     }
 
-    @Override
-    public void montaTela() {
-        this.getInstanceView().setVisible(true);
-        this.getInstanceView().setEnabled(false);
-        this.controllerLogin.montaTela();
+    public static ControllerMenu getInstance() {
+        if (instance == null) {
+            instance = new ControllerMenu();
+        }
+        
+        return instance;
     }
-
+    
     /**
      * Adiciona as ações na tela
      */

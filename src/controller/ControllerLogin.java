@@ -4,9 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Usuario;
 import util.MD5;
-import view.View;
-import view.ViewCadastroUsuario;
-import view.ViewIndex;
 import view.ViewLogin;
 
 /**
@@ -15,18 +12,20 @@ import view.ViewLogin;
  */
 public class ControllerLogin extends Controller {
 
-    private static Usuario usuarioLogado;
-    
-    private ViewLogin viewLogin;
+    private static ControllerLogin instance;
 
-    public ControllerLogin() {
-        this.viewLogin = new ViewLogin();
+    private static Usuario usuarioLogado;
+
+    private ControllerLogin() {
         this.adicionaAcoesTela();
     }
-    
-    @Override
-    public void montaTela() {
-        this.viewLogin.setVisible(true);
+
+    public static ControllerLogin getInstance() {
+        if (instance == null) {
+            instance = new ControllerLogin();
+        }
+        
+        return instance;
     }
     
     /**
@@ -41,18 +40,18 @@ public class ControllerLogin extends Controller {
      * Adiciona a ação de click de entrar no sistema
      */
     private void adicionaAcaoEntrarTela() {
-        this.viewLogin.adicionaAcaoBotaoEntrar(new ActionListener() {
+        this.getInstanceView().adicionaAcaoBotaoEntrar(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Usuario usuario = getViewLogin().getModelFromTela();
+                Usuario usuario = getInstanceView().getModelFromTela();
                 if (validaLogin(usuario)) {
 //                  Acho que seria mas persistir antes pra salvar os dados da pessoa, que são mais importantes.
                     usuarioLogado = usuario;
-                    getViewLogin().setVisible(false);
-                    ViewIndex.getInstance().setEnabled(true);
+                    getInstanceView().setVisible(false);
+                    ControllerMenu.getInstance().montaTela();
                 }
                 else {
-                    getViewLogin().showMensagemDadosIncorretos();
+                    getInstanceView().showMensagemDadosIncorretos();
                 }
             }
         });
@@ -62,11 +61,10 @@ public class ControllerLogin extends Controller {
      * Adiciona ação de click de cadastro de usuário
      */
     private void adicionaAcaoCadastroTela(){
-        this.viewLogin.adicionaAcaoBotaoCadastro(new ActionListener() {
+        this.getInstanceView().adicionaAcaoBotaoCadastro(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                ControllerUsuario controllerUsuario = new ControllerUsuario();
-                controllerUsuario.montaTela();
+                ControllerUsuario.getInstance().montaTela();
             }
         });
     }
@@ -79,10 +77,6 @@ public class ControllerLogin extends Controller {
         ControllerLogin.usuarioLogado = usuarioLogado;
     }
 
-    public ViewLogin getViewLogin() {
-        return viewLogin;
-    }
-    
     private boolean validaLogin(Usuario usuario) {
         boolean retorno = false;
         

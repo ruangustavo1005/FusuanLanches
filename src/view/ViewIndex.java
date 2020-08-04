@@ -9,16 +9,16 @@ import java.awt.event.ActionListener;
 public class ViewIndex extends View {
 
     private static ViewIndex instance;
+    
+    private ViewIndex() {
+        initComponents();
+    }
 
     public static ViewIndex getInstance() {
         if(ViewIndex.instance == null){
             ViewIndex.instance = new ViewIndex();
         }
         return ViewIndex.instance;
-    }
-    
-    private ViewIndex() {
-        initComponents();
     }
     
     /**
@@ -34,20 +34,20 @@ public class ViewIndex extends View {
 
         jFileChooser1 = new javax.swing.JFileChooser();
         jMenuBar1 = new javax.swing.JMenuBar();
-        imCadastroUsuario = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menuCadastros = new javax.swing.JMenu();
+        imCadastroUsuario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fusuan Lanches");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        imCadastroUsuario.setText("Cadastros");
+        menuCadastros.setText("Cadastros");
 
-        jMenuItem1.setText("Usuário");
-        imCadastroUsuario.add(jMenuItem1);
+        imCadastroUsuario.setText("Usuário");
+        menuCadastros.add(imCadastroUsuario);
 
-        jMenuBar1.add(imCadastroUsuario);
+        jMenuBar1.add(menuCadastros);
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
@@ -101,17 +101,12 @@ public class ViewIndex extends View {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu imCadastroUsuario;
+    private javax.swing.JMenuItem imCadastroUsuario;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu menuCadastros;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public Object getModelFromTela() {
-        return new Object();
-    }
 
     @Override
     public void run() {

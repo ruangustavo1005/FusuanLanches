@@ -8,7 +8,6 @@ import view.View;
  */
 public abstract class Controller {
     
-//    protected Model model;
     protected abstract View getInstanceView();
     
     public void montaTela(){

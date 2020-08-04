@@ -11,6 +11,10 @@ import model.Usuario;
 public class ViewLogin extends View {
     
     private static ViewLogin instance;
+
+    private ViewLogin() {
+        initComponents();
+    }
     
     public static ViewLogin getInstance() {
         if(ViewLogin.instance == null){
@@ -18,9 +22,12 @@ public class ViewLogin extends View {
         }
         return ViewLogin.instance;
     }
-
-    public ViewLogin() {
-        initComponents();
+    
+    public Usuario getModelFromTela() {
+        Usuario usuario = new Usuario();
+        usuario.setLogin(txtLogin.getText());
+        usuario.setSenha(new String(txtSenha.getPassword()));
+        return usuario;
     }
 
     public void adicionaAcaoBotaoEntrar(ActionListener actionListener) {
@@ -29,13 +36,6 @@ public class ViewLogin extends View {
     
     public void adicionaAcaoBotaoCadastro(ActionListener actionListener){
         this.btnCadastrar.addActionListener(actionListener);
-    }
-    
-    public Usuario getModelFromTela() {
-        Usuario usuario = new Usuario();
-        usuario.setLogin(txtLogin.getText());
-        usuario.setSenha(new String(txtSenha.getPassword()));
-        return usuario;
     }
     
     public void showMensagemDadosIncorretos() {

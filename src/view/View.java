@@ -1,16 +1,20 @@
 package view;
 
+import exceptions.ExceptionMetodoNaoImplementado;
+
 /**
  * Classe abstrata da View
  * @author Leonardo Alex Fusinato <leonardo.fusinato@edu.udesc.br>
  */
 public abstract class View extends javax.swing.JFrame implements Runnable{
 
-    public View() {
+    protected View() {
         initComponents();
     }
     
-    public abstract Object getModelFromTela();
+    public Object getModelFromTela() throws ExceptionMetodoNaoImplementado {
+        throw new ExceptionMetodoNaoImplementado("getModelFromTela", this.getClass().getName());
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
