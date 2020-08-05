@@ -27,6 +27,13 @@ public class ViewIndex extends View {
     public void adicionaAcaoItemMenuCadastroUsuario(ActionListener actionListener) {
         this.imCadastroUsuario.addActionListener(actionListener);
     }
+    
+    /**
+     * Adiciona a ação de nova comanda
+     */
+    public void adicionaAcaoNovaComanda(ActionListener actionListener){
+        this.btnNovaComanda.addActionListener(actionListener);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
