@@ -23,6 +23,7 @@ public class ViewLogin extends View {
         return ViewLogin.instance;
     }
     
+    @Override
     public Usuario getModelFromTela() {
         Usuario usuario = new Usuario();
         usuario.setLogin(txtLogin.getText());
@@ -128,4 +129,5 @@ public class ViewLogin extends View {
     public void run() {
         ViewLogin.getInstance().setVisible(true);
     }
+    
 }

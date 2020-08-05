@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 public class ViewCadastroUsuario extends View {
     
     private static ViewCadastroUsuario instance;
+        
+    public static final int TIPO_CLIENTE = 0;
 
     private ViewCadastroUsuario() {
         initComponents();
@@ -27,7 +29,7 @@ public class ViewCadastroUsuario extends View {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblData = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
@@ -54,7 +56,7 @@ public class ViewCadastroUsuario extends View {
 
         jLabel2.setText("CPF/CNPJ:");
 
-        jLabel3.setText("Data de Nascimento:");
+        lblData.setText("Data de Nascimento:");
 
         jLabel4.setText("Email:");
 
@@ -104,7 +106,7 @@ public class ViewCadastroUsuario extends View {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(cbTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(lblData)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(178, 178, 178)))
@@ -125,7 +127,7 @@ public class ViewCadastroUsuario extends View {
                     .addComponent(cbTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblData)
                     .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +160,13 @@ public class ViewCadastroUsuario extends View {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbTipoUsuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTipoUsuarioItemStateChanged
-        
+        if(this.cbTipoUsuario.getSelectedIndex() != TIPO_CLIENTE){
+            this.txtDataNascimento.setVisible(false);
+            this.lblData.setVisible(false);
+        }else{
+            this.txtDataNascimento.setVisible(true);
+            this.lblData.setVisible(true);
+        }
         
     }//GEN-LAST:event_cbTipoUsuarioItemStateChanged
 
@@ -172,11 +180,11 @@ public class ViewCadastroUsuario extends View {
     private javax.swing.JComboBox<String> cbTipoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lblData;
     private javax.swing.JPasswordField txtConfirmarSenha;
     private javax.swing.JTextField txtCpfCnpj;
     private javax.swing.JTextField txtDataNascimento;

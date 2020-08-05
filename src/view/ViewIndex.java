@@ -33,6 +33,7 @@ public class ViewIndex extends View {
     private void initComponents() {
 
         jFileChooser1 = new javax.swing.JFileChooser();
+        btnNovaComanda = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastros = new javax.swing.JMenu();
         imCadastroUsuario = new javax.swing.JMenuItem();
@@ -42,6 +43,8 @@ public class ViewIndex extends View {
         setTitle("Fusuan Lanches");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        btnNovaComanda.setText("Nova Comanda");
+
         menuCadastros.setText("Cadastros");
 
         imCadastroUsuario.setText("Usuário");
@@ -49,7 +52,7 @@ public class ViewIndex extends View {
 
         jMenuBar1.add(menuCadastros);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Consultas");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -58,11 +61,17 @@ public class ViewIndex extends View {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnNovaComanda)
+                .addContainerGap(285, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(btnNovaComanda)
+                .addContainerGap(232, Short.MAX_VALUE))
         );
 
         pack();
@@ -101,6 +110,7 @@ public class ViewIndex extends View {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnNovaComanda;
     private javax.swing.JMenuItem imCadastroUsuario;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JMenu jMenu2;
