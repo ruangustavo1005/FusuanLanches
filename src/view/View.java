@@ -6,7 +6,7 @@ import exceptions.ExceptionMetodoNaoImplementado;
  * Classe abstrata da View
  * @author Leonardo Alex Fusinato <leonardo.fusinato@edu.udesc.br>
  */
-public abstract class View extends javax.swing.JFrame implements Runnable{
+public abstract class View extends javax.swing.JFrame implements Runnable {
 
     protected View() {
         initComponents();

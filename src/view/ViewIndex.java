@@ -24,7 +24,7 @@ public class ViewIndex extends View {
     /**
      * Adiciona o item de cadastro de usuário no menu
      */
-    public void adicionaAcaoItemMenuCadastroUsuario(ActionListener actionListener){
+    public void adicionaAcaoItemMenuCadastroUsuario(ActionListener actionListener) {
         this.imCadastroUsuario.addActionListener(actionListener);
     }
 
