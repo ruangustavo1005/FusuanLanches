@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 /**
  * Modelo de pessoa fornecedora de suprimentos
  * @author Ruan
@@ -31,5 +29,5 @@ public class Fornecedor extends Pessoa{
     public String toString() {
         return "Fornecedor{" + "telefone=" + telefone + '}';
     }
-    
+
 }
