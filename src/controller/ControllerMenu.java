@@ -53,7 +53,7 @@ public class ControllerMenu extends Controller {
         this.getInstanceView().adicionaAcaoItemMenuCadastroUsuario(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                ViewCadastroUsuario.getInstance().setVisible(true);
+                ControllerUsuario.getInstance().montaTela();
             }
         });
     }

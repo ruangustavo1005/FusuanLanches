@@ -9,15 +9,15 @@ public class ViewCadastroComanda extends View {
 
     public static ViewCadastroComanda instance;
 
-    public ViewCadastroComanda() {
+    private ViewCadastroComanda() {
         initComponents();
     }
     
-    public static ViewCadastroComanda getInstance() {
-        if (ViewCadastroComanda.instance == null) {
-            ViewCadastroComanda.instance = new ViewCadastroComanda();
+    public static ViewCadastroComanda getInstance(){
+        if (instance == null) {
+            instance = new ViewCadastroComanda();
         }
-        return ViewCadastroComanda.instance;
+        return instance;
     }
 
     @SuppressWarnings("unchecked")
@@ -147,7 +147,7 @@ public class ViewCadastroComanda extends View {
 
     @Override
     public void run() {
-        ViewCadastroComanda.getInstance().setVisible(true);
+        getInstance().setVisible(true);
     }
 
 }

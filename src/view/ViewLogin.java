@@ -17,10 +17,10 @@ public class ViewLogin extends View {
     }
     
     public static ViewLogin getInstance() {
-        if(ViewLogin.instance == null){
-            ViewLogin.instance = new ViewLogin();
+        if (instance == null) {
+            instance = new ViewLogin();
         }
-        return ViewLogin.instance;
+        return instance;
     }
     
     @Override
@@ -127,7 +127,7 @@ public class ViewLogin extends View {
 
     @Override
     public void run() {
-        ViewLogin.getInstance().setVisible(true);
+        getInstance().setVisible(true);
     }
     
 }
