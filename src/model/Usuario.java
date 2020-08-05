@@ -4,7 +4,6 @@ import util.MD5;
 
 /**
  * Modelo de usuário geral do sistema
- * O nível de acesso e privilégios são definidos por seu privilégios
  * @author Ruan
  */
 public class Usuario {

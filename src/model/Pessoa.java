@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 /**
  * Modelo padrão de pessoa
  * @author Ruan
