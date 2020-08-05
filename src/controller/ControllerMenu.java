@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.ViewCadastroComanda;
 import view.ViewCadastroUsuario;
 import view.ViewIndex;
 
@@ -30,6 +31,19 @@ public class ControllerMenu extends Controller {
      */
     private void adicionaAcoesTela() {
         this.adicionaAcaoItemMenuCadastroUsuario();
+        this.adicionaAcaoNovaComanda();
+    }
+    
+    /**
+     * Adiciona a ação de nova comanda
+     */
+    public void adicionaAcaoNovaComanda(){
+        this.getInstanceView().adicionaAcaoNovaComanda(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                ViewCadastroComanda.getInstance().setVisible(true);
+            }
+        });
     }
     
     /**
