@@ -17,10 +17,10 @@ public class ViewCadastroUsuario extends View {
     }
     
     public static ViewCadastroUsuario getInstance() {
-        if(ViewCadastroUsuario.instance == null){
-            ViewCadastroUsuario.instance = new ViewCadastroUsuario();
+        if (instance == null) {
+            instance = new ViewCadastroUsuario();
         }
-        return ViewCadastroUsuario.instance;
+        return instance;
     }
 
     @SuppressWarnings("unchecked")
@@ -196,7 +196,7 @@ public class ViewCadastroUsuario extends View {
 
     @Override
     public void run() {
-        ViewCadastroUsuario.getInstance().setVisible(true);
+        getInstance().setVisible(true);
     }
     
 }
