@@ -29,6 +29,13 @@ public class ViewIndex extends View {
     }
     
     /**
+     * Adiciona o item de cadastro do item no menu
+     */
+    public void adicionaAcaoItemMenuCadastroItem(ActionListener actionListener) {
+        this.imCadastroItem.addActionListener(actionListener);
+    }
+    
+    /**
      * Adiciona a ação de nova comanda
      */
     public void adicionaAcaoNovaComanda(ActionListener actionListener){
@@ -44,6 +51,7 @@ public class ViewIndex extends View {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastros = new javax.swing.JMenu();
         imCadastroUsuario = new javax.swing.JMenuItem();
+        imCadastroItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,6 +64,9 @@ public class ViewIndex extends View {
 
         imCadastroUsuario.setText("Usuário");
         menuCadastros.add(imCadastroUsuario);
+
+        imCadastroItem.setText("Item");
+        menuCadastros.add(imCadastroItem);
 
         jMenuBar1.add(menuCadastros);
 
@@ -87,6 +98,7 @@ public class ViewIndex extends View {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNovaComanda;
+    private javax.swing.JMenuItem imCadastroItem;
     private javax.swing.JMenuItem imCadastroUsuario;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JMenu jMenu2;
