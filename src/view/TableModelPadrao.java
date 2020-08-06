@@ -3,6 +3,7 @@ package view;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
+import util.StringUtils;
 
 /**
  * Classe dinâmica 100% funcional 2020 atualizado crackeado pt-br só as melhores pc fraco sem placa [SOLUCIONADO!!] (DEU CERTO?)
@@ -47,7 +48,7 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
 
     @Override
     public String getColumnName(int column) {
-        return this.getNomeAtributo(column);
+        return StringUtils.ucfirst(this.getNomeAtributo(column));
     }
     
     private int getQuantidadeAtributos() {
@@ -67,7 +68,7 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
     private Object getAtributo(Type model, int pos){
         Object retorno = null;
         String nome   = this.getNomeAtributo(pos);
-        String metodo = "get" + nome.substring(0, 1).toUpperCase() + nome.substring(1);
+        String metodo = "get" + StringUtils.ucfirst(nome);
         try {
             retorno = model.getClass().getMethod(metodo).invoke(model);
         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {}
