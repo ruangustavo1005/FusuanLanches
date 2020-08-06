@@ -1,6 +1,10 @@
 package view;
 
 import exceptions.ExceptionMetodoNaoImplementado;
+import java.text.ParseException;
+import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /**
  * Classe abstrata da View
@@ -8,12 +12,44 @@ import exceptions.ExceptionMetodoNaoImplementado;
  */
 public abstract class View extends javax.swing.JFrame implements Runnable {
 
+    public static final String CAMPO_CODIGO  = "####";
+    public static final String CAMPO_VALOR   = "##,##";
+    public static final String CAMPO_DATA    = "##/##/####";
+    
     protected View() {
         initComponents();
     }
     
+    /**
+     * Retorna o modelo com os dados setados da tela.
+     * @throws ExceptionMetodoNaoImplementado dispara caso seja chamado por um controlador sem ter sido implementado
+     */
     public Object getModelFromTela() throws ExceptionMetodoNaoImplementado {
         throw new ExceptionMetodoNaoImplementado("getModelFromTela", this.getClass().getName());
+    }
+    
+    protected void formataCampo(JFormattedTextField campo, String formato){
+        try {
+            MaskFormatter mask = new MaskFormatter(formato);
+            mask.install(campo);
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao formatar o campo numérico");
+        }
+    }
+    
+    /**
+     * Retorna o modelo com os dados setados da tela.
+     * @throws ExceptionMetodoNaoImplementado dispara caso seja chamado por um controlador sem ter sido implementado
+     */
+    public void setModelTela() throws ExceptionMetodoNaoImplementado {
+        throw new ExceptionMetodoNaoImplementado("setModelTela", this.getClass().getName());
+    }
+
+    /**
+     * Dispara uma mensagem
+     */
+    public void showMensagem(String mensagem) {
+        JOptionPane.showMessageDialog(this, mensagem);
     }
 
     @SuppressWarnings("unchecked")
