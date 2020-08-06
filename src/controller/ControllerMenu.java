@@ -32,6 +32,7 @@ public class ControllerMenu extends Controller {
     private void adicionaAcoesTela() {
         this.adicionaAcaoItemMenuCadastroUsuario();
         this.adicionaAcaoNovaComanda();
+        this.adicionaAcaoConfiguracoes();
     }
     
     /**
@@ -58,6 +59,18 @@ public class ControllerMenu extends Controller {
         });
     }
 
+    /**
+     * Adiciona a ação do botão de editar configurações
+     */
+    private void adicionaAcaoConfiguracoes() {
+        this.getInstanceView().adicionaAcaoConfiguracoes(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControllerConfiguracoes.getInstance().montaTela();
+            }
+        });
+    }
+    
     @Override
     protected ViewIndex getInstanceView() {
         return ViewIndex.getInstance();

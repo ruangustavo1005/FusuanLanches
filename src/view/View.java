@@ -1,6 +1,7 @@
 package view;
 
 import exceptions.ExceptionMetodoNaoImplementado;
+import javax.swing.JOptionPane;
 
 /**
  * Classe abstrata da View
@@ -12,10 +13,29 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
         initComponents();
     }
     
+    /**
+     * Retorna o modelo com os dados setados da tela.
+     * @throws ExceptionMetodoNaoImplementado dispara caso seja chamado por um controlador sem ter sido implementado
+     */
     public Object getModelFromTela() throws ExceptionMetodoNaoImplementado {
         throw new ExceptionMetodoNaoImplementado("getModelFromTela", this.getClass().getName());
     }
+    
+    /**
+     * Retorna o modelo com os dados setados da tela.
+     * @throws ExceptionMetodoNaoImplementado dispara caso seja chamado por um controlador sem ter sido implementado
+     */
+    public void setModelTela() throws ExceptionMetodoNaoImplementado {
+        throw new ExceptionMetodoNaoImplementado("setModelTela", this.getClass().getName());
+    }
 
+    /**
+     * Dispara uma mensagem
+     */
+    public void showMensagem(String mensagem) {
+        JOptionPane.showMessageDialog(this, mensagem);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
