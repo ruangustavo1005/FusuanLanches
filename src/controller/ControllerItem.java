@@ -47,7 +47,7 @@ public class ControllerItem extends Controller {
             public void actionPerformed(ActionEvent ae) {
                 if(salvar()) {
                     getInstanceView().showMensagem("Item adicionado com sucesso!");
-                    getInstanceView().setVisible(false);
+                    getInstanceView().dispose();
                 } else {
                     getInstanceView().showMensagem("Houve um erro ao cadastrar o item");
                 }
@@ -69,7 +69,7 @@ public class ControllerItem extends Controller {
         return true;
     }
     
-    public ArrayList listar() {
+    public ArrayList<Item> listar() {
         return this.itens.getLista();
     }
 

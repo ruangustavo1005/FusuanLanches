@@ -40,37 +40,7 @@ public class ControllerComanda extends Controller{
     }
     
     private void setaListaItens(){
-        getInstanceView().setListaItens(new ComboBoxModel() {
-            @Override
-            public void setSelectedItem(Object o) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public Object getSelectedItem() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public int getSize() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public Object getElementAt(int i) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void addListDataListener(ListDataListener ll) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void removeListDataListener(ListDataListener ll) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });
+        getInstanceView().setListaItens(ControllerItem.getInstance().listar());
     }
 
     public static ControllerComanda getInstance() {

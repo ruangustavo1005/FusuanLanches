@@ -1,9 +1,15 @@
 package view;
 
 import exceptions.ExceptionMetodoNaoImplementado;
+import java.awt.Component;
+import java.awt.Container;
 import java.text.ParseException;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.text.JTextComponent;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -13,11 +19,46 @@ import javax.swing.text.MaskFormatter;
 public abstract class View extends javax.swing.JFrame implements Runnable {
 
     public static final String CAMPO_CODIGO  = "####";
-    public static final String CAMPO_VALOR   = "##,##";
+    public static final String CAMPO_VALOR   = "###,##";
     public static final String CAMPO_DATA    = "##/##/####";
     
     protected View() {
         initComponents();
+    }
+
+    @Override
+    public void dispose() {
+        this.clearAll();
+        super.dispose();
+    }
+    
+    private void clearAll() {
+        for (Component c : this.getComponents()) {
+            if (c instanceof JTextField || c instanceof JTextArea) {
+                ((JTextComponent) c).setText("");
+            }
+            else if (c instanceof JRadioButton) {
+                ((JRadioButton) c).setSelected(false);
+            }
+            else if (c instanceof Container) {
+                this.clearAll((Container) c);
+            }
+        }
+    }
+    
+
+    private void clearAll(Container container) {
+        for (Component c : container.getComponents()) {
+            if (c instanceof JTextField || c instanceof JTextArea) {
+                ((JTextComponent) c).setText("");
+            }
+            else if (c instanceof JRadioButton) {
+                ((JRadioButton) c).setSelected(false);
+            }
+            else if (c instanceof Container) {
+                this.clearAll((Container) c);
+            }
+        }
     }
     
     /**
@@ -28,11 +69,18 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
         throw new ExceptionMetodoNaoImplementado("getModelFromTela", this.getClass().getName());
     }
     
-    protected void formataCampo(JFormattedTextField campo, String formato){
+    protected void formataCampo(JFormattedTextField campo, String formato) {
+        this.formataCampo(campo, formato, ' ');
+    }
+    
+    
+    protected void formataCampo(JFormattedTextField campo, String formato, char placeHolder) {
         try {
             MaskFormatter mask = new MaskFormatter(formato);
+            mask.setPlaceholderCharacter(placeHolder);
             mask.install(campo);
-        } catch (ParseException ex) {
+        }
+        catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao formatar o campo");
         }
     }
