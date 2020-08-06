@@ -37,11 +37,11 @@ public class ControllerMenu extends Controller {
     /**
      * Adiciona a ação de nova comanda
      */
-    public void adicionaAcaoNovaComanda(){
+    private void adicionaAcaoNovaComanda(){
         this.getInstanceView().adicionaAcaoNovaComanda(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                ViewCadastroComanda.getInstance().setVisible(true);
+                ControllerComanda.getInstance().montaTela();
             }
         });
     }
@@ -49,7 +49,7 @@ public class ControllerMenu extends Controller {
     /**
      * Adiciona a ação do item menu de cadastro de usuário
      */
-    public void adicionaAcaoItemMenuCadastroUsuario(){
+    private void adicionaAcaoItemMenuCadastroUsuario(){
         this.getInstanceView().adicionaAcaoItemMenuCadastroUsuario(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
