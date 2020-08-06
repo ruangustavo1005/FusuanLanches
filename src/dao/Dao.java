@@ -11,7 +11,7 @@ public class Dao<Type> {
     private ArrayList<Type> lista;
 
     public Dao() {
-        
+        this.lista = new ArrayList<>();
     }
 
     public ArrayList<Type> getLista() {

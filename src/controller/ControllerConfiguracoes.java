@@ -18,6 +18,7 @@ public class ControllerConfiguracoes extends Controller {
     private Dao<Configuracoes> configuracoes;
     
     private ControllerConfiguracoes() {
+        this.configuracoes = new Dao<>();
         this.adicionaAcoes();
     }
 

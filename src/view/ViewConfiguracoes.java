@@ -3,6 +3,7 @@ package view;
 import exceptions.ExceptionMetodoNaoImplementado;
 import java.awt.event.ActionListener;
 import model.Configuracoes;
+import util.NumberUtils;
 
 /**
  *
@@ -15,6 +16,7 @@ public class ViewConfiguracoes extends View {
     private Configuracoes configuracoes;
     
     private ViewConfiguracoes() {
+        this.configuracoes = new Configuracoes();
         initComponents();
     }
 
@@ -40,12 +42,12 @@ public class ViewConfiguracoes extends View {
     
     @Override
     public Configuracoes getModelFromTela() {
-        Float descontoAniversario    = Float.parseFloat(txtDescontoAniversario.getText());
-        Float descontoPagamentoVista = Float.parseFloat(txtDescontoPagamentoVista.getText());
-        Float descontoValorGasto     = Float.parseFloat(txtDescontoValorGasto.getText());
-        Float descontoVisitas        = Float.parseFloat(txtDescontoVisitas.getText());
-        Float valorGasto             = Float.parseFloat(txtValorGasto.getText());
-        int   visitas                = Integer.parseInt(txtVisitas.getText());
+        Float descontoAniversario    = NumberUtils.parseFloat(txtDescontoAniversario.getText());
+        Float descontoPagamentoVista = NumberUtils.parseFloat(txtDescontoPagamentoVista.getText());
+        Float descontoValorGasto     = NumberUtils.parseFloat(txtDescontoValorGasto.getText());
+        Float descontoVisitas        = NumberUtils.parseFloat(txtDescontoVisitas.getText());
+        Float valorGasto             = NumberUtils.parseFloat(txtValorGasto.getText());
+        int   visitas                = NumberUtils.parseInt(txtVisitas.getText());
         
         this.configuracoes.setDescontoAniversario(descontoAniversario);
         this.configuracoes.setDescontoPagamentoVista(descontoPagamentoVista);
