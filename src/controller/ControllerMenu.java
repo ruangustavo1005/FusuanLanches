@@ -34,6 +34,7 @@ public class ControllerMenu extends Controller {
         this.adicionaAcaoNovaComanda();
         this.adicionaAcaoItemMenuCadastroItem();
         this.adicionaAcaoConfiguracoes();
+        this.adicionaAcaoConsultarItens();
     }
     
     /**
@@ -81,6 +82,18 @@ public class ControllerMenu extends Controller {
             public void actionPerformed(ActionEvent e) {
                 ControllerConfiguracoes.getInstance().montaTela();
                 
+            }
+        });
+    }
+
+    /**
+     * Adiciona a ação do botão de consultar itens
+     */
+    private void adicionaAcaoConsultarItens() {
+        this.getInstanceView().adicionaAcaoConsultaItem(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControllerConsultaItem.getInstance().montaTela();
             }
         });
     }

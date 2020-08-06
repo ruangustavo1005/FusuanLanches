@@ -48,6 +48,13 @@ public class ViewIndex extends View {
     public void adicionaAcaoConfiguracoes(ActionListener actionListener){
         this.btnConfiguracoes.addActionListener(actionListener);
     }
+    
+    /**
+     * Adiciona a ação de consultar itens
+     */
+    public void adicionaAcaoConsultaItem(ActionListener actionListener){
+        this.imConsultaItem.addActionListener(actionListener);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -62,6 +69,7 @@ public class ViewIndex extends View {
         imCadastroUsuario = new javax.swing.JMenuItem();
         imCadastroItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        imConsultaItem = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -84,6 +92,10 @@ public class ViewIndex extends View {
         jMenuBar1.add(menuCadastros);
 
         jMenu2.setText("Consultas");
+
+        imConsultaItem.setText("Itens");
+        jMenu2.add(imConsultaItem);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -121,6 +133,7 @@ public class ViewIndex extends View {
     private javax.swing.JButton btnNovaComanda;
     private javax.swing.JMenuItem imCadastroItem;
     private javax.swing.JMenuItem imCadastroUsuario;
+    private javax.swing.JMenuItem imConsultaItem;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

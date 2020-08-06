@@ -32,6 +32,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultas"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="imConsultaItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Itens"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

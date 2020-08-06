@@ -1,9 +1,9 @@
 package controller;
 
 import dao.Dao;
-import exceptions.ExceptionMetodoNaoImplementado;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import model.Item;
 import view.ViewCadastroItem;
 
@@ -67,6 +67,10 @@ public class ControllerItem extends Controller {
     private boolean salvar() {
         this.itens.add(this.getInstanceView().getModelFromTela());
         return true;
+    }
+    
+    public ArrayList listar() {
+        return this.itens.getLista();
     }
     
 }
