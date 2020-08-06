@@ -16,7 +16,6 @@ public class Item {
     private String validade;
 
     public Item() {
-        
     }
 
     public Item(int codigo, String nome, float valor, int estoque, String validade) {

@@ -9,6 +9,7 @@ public class ComandaItem {
     private Item    item;
     private Comanda comanda;
     private int     quantidade;
+    
     /**
      * Cada item da comanda vai ter seu valor por que podem ser adicioandos descontos na hora da venda.
      * O valor do item que é salvo nele é apenas o valor base pra este.

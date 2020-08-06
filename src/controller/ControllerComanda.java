@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dao.Dao;
 import model.Comanda;
 import view.ViewCadastroComanda;
 
@@ -18,9 +19,22 @@ public class ControllerComanda extends Controller{
     
     private Comanda comanda;
     
+    private Dao<Comanda> daoComanda;
+    
     @Override
     protected ViewCadastroComanda getInstanceView() {
         return ViewCadastroComanda.getInstance();
+    }
+
+    private ControllerComanda() {
+        
+    }
+
+    public static ControllerComanda getInstance() {
+        if(instance == null){
+            instance = new ControllerComanda();
+        }
+        return instance;
     }
     
 }
