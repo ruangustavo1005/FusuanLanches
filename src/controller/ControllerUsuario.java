@@ -30,14 +30,14 @@ public class ControllerUsuario extends Controller {
     /**
      * Adiciona as ações na tela
      */
-    public void adicionaAcoesTela(){
+    private void adicionaAcoesTela(){
         this.adicionaAcaoCancelar();
     }
     
     /**
      * Adiciona a ação de cancelar na tela
      */
-    public void adicionaAcaoCancelar(){
+    private void adicionaAcaoCancelar(){
         this.getInstanceView().adicionaAcaoBotaoCancelar(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {

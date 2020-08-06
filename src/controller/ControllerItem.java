@@ -1,8 +1,10 @@
 package controller;
 
 import dao.Dao;
+import exceptions.ExceptionMetodoNaoImplementado;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import model.Item;
-import view.View;
 import view.ViewCadastroItem;
 
 /**
@@ -15,11 +17,56 @@ public class ControllerItem extends Controller {
     
     private Item item;
     
-    private Dao<Item> daoItem;
+    private Dao<Item> itens;
+
+    private ControllerItem() {
+        itens  = new Dao<Item>();
+        this.adicionaAcoesTela();
+    }
+    
+    public static ControllerItem getInstance() {
+        if (instance == null) {
+            instance = new ControllerItem();
+        }
+        return instance;
+    }
+    
+    /**
+     * Adiciona as ações na tela
+     */
+    private void adicionaAcoesTela() {
+        this.adicionaAcaoCadastrar();
+    }
+    
+    /**
+     * Adiciona a ação para cadastrar o item
+     */
+    private void adicionaAcaoCadastrar() {
+        getInstanceView().adicionaAcaoCadastrar(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(salvar()) {
+                    getInstanceView().showMensagem("Item adicionado com sucesso!");
+                    getInstanceView().setVisible(false);
+                } else {
+                    getInstanceView().showMensagem("Houve um erro ao cadastrar o item");
+                }
+            }
+        });
+    }
     
     @Override
     protected ViewCadastroItem getInstanceView() {
         return ViewCadastroItem.getInstance();
+    }
+    
+    /**
+     * Salva o item no ArrayList
+     * @return boolean
+     */
+    private boolean salvar() {
+        this.itens.add(this.getInstanceView().getModelFromTela());
+        return true;
     }
     
 }

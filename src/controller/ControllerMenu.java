@@ -32,6 +32,7 @@ public class ControllerMenu extends Controller {
     private void adicionaAcoesTela() {
         this.adicionaAcaoItemMenuCadastroUsuario();
         this.adicionaAcaoNovaComanda();
+        this.adicionaAcaoItemMenuCadastroItem();
         this.adicionaAcaoConfiguracoes();
     }
     
@@ -55,6 +56,18 @@ public class ControllerMenu extends Controller {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 ControllerUsuario.getInstance().montaTela();
+            }
+        });
+    }
+    
+    /**
+     * Adiciona a ação do item menu de cadastro do item
+     */
+    private void adicionaAcaoItemMenuCadastroItem() {
+        this.getInstanceView().adicionaAcaoItemMenuCadastroItem(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                ControllerItem.getInstance().montaTela();
             }
         });
     }

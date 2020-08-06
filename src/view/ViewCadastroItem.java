@@ -1,8 +1,8 @@
 package view;
 
-import exceptions.ExceptionMetodoNaoImplementado;
 import java.awt.event.ActionListener;
 import model.Item;
+import util.NumberUtils;
 
 /**
  * View de cadastro do item 
@@ -12,8 +12,11 @@ public class ViewCadastroItem extends View {
 
     private static ViewCadastroItem instance;
     
+    private Item model;
+    
     public ViewCadastroItem() {
         initComponents();
+        model = new Item();
         this.formataCampo(txtCodigo,   CAMPO_CODIGO);
         this.formataCampo(txtValor,    CAMPO_VALOR);
         this.formataCampo(txtValidade, CAMPO_DATA);
@@ -35,9 +38,9 @@ public class ViewCadastroItem extends View {
     }
 
     @Override
-    public Item getModelFromTela() throws ExceptionMetodoNaoImplementado {
-        return new Item(Integer.parseInt(txtCodigo.getText()), txtNome.getText(), Float.parseFloat(txtValor.getText()), 
-                        Integer.parseInt(txtEstoque.getText()), txtValidade.getText());
+    public Item getModelFromTela() {
+        return new Item(NumberUtils.parseInt(txtCodigo.getText()), txtNome.getText(), NumberUtils.parseFloat(txtValor.getText()), 
+                        NumberUtils.parseInt(txtEstoque.getText()), txtValidade.getText());
         
     }
 
@@ -154,6 +157,7 @@ public class ViewCadastroItem extends View {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 

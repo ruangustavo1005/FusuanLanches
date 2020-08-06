@@ -7,11 +7,13 @@ package util;
 public class NumberUtils {
     
     public static int parseInt(String s) {
-        return s.equals("") ? 0 : Integer.parseInt(s);
+        String replace = s.trim();
+        return replace.equals("") ? 0 : Integer.parseInt(replace);
     }
     
     public static float parseFloat(String s) {
-        return (float) (s.equals("") ? 0.0 : Float.parseFloat(s));
+        String replace = s.replace(",", ".").trim();
+        return (float) (replace.equals("") ? 0.0 : Float.parseFloat(replace));
     }
     
 }
