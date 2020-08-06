@@ -26,4 +26,8 @@ public class Dao<Type> {
         this.getLista().remove(object);
     }
     
+    public Type get(int i) {
+        return this.getLista().get(i);
+    }
+    
 }

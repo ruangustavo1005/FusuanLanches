@@ -80,6 +80,7 @@ public class ControllerMenu extends Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ControllerConfiguracoes.getInstance().montaTela();
+                
             }
         });
     }

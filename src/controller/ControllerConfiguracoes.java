@@ -4,7 +4,6 @@ import dao.Dao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Configuracoes;
-import view.View;
 import view.ViewConfiguracoes;
 
 /**
@@ -28,6 +27,10 @@ public class ControllerConfiguracoes extends Controller {
         }
         
         return instance;
+    }
+    
+    public void setModelTe1a() {
+        
     }
     
     @Override
@@ -55,6 +58,10 @@ public class ControllerConfiguracoes extends Controller {
     }
     
     private boolean salvar() {
+        if (configuracoes.getLista().size() > 0) {
+            this.configuracoes.remove(configuracoes.get(0));
+        }
+        
         this.configuracoes.add(this.getInstanceView().getModelFromTela());
         
         return true;
