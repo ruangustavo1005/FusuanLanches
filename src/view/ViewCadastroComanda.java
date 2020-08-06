@@ -1,12 +1,6 @@
 package view;
 
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ComboBoxModel;
-import javax.swing.JOptionPane;
-import javax.swing.text.MaskFormatter;
 import model.Item;
 
 /**
@@ -24,8 +18,10 @@ public class ViewCadastroComanda extends View {
         this.formataCampo(txtData, "##/##/#####");
     }
     
-    public void setListaItens(ComboBoxModel itens){
-        this.listItens.setModel(itens);
+    public void setListaItens(ArrayList<Item> itens) {
+        for (Item item : itens) {
+            this.listItens.addItem(item);
+        }
     }
     
     public static ViewCadastroComanda getInstance(){
@@ -168,7 +164,7 @@ public class ViewCadastroComanda extends View {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> listAtendente;
     private javax.swing.JComboBox<String> listCliente;
-    private javax.swing.JComboBox<String> listItens;
+    private javax.swing.JComboBox<Item> listItens;
     private javax.swing.JFormattedTextField txtData;
     private javax.swing.JFormattedTextField txtNumero;
     // End of variables declaration//GEN-END:variables

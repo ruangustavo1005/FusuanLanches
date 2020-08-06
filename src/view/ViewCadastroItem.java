@@ -17,10 +17,10 @@ public class ViewCadastroItem extends View {
     public ViewCadastroItem() {
         initComponents();
         model = new Item();
-        this.formataCampo(txtCodigo,   CAMPO_CODIGO);
-        this.formataCampo(txtValor,    CAMPO_VALOR);
-        this.formataCampo(txtValidade, CAMPO_DATA);
-        this.formataCampo(txtEstoque,  "######");
+        this.formataCampo(txtCodigo,   CAMPO_CODIGO, '0');
+        this.formataCampo(txtValor,    CAMPO_VALOR, '0');
+        this.formataCampo(txtValidade, CAMPO_DATA, '0');
+        this.formataCampo(txtEstoque,  "######", '0');
     }
     
     public static ViewCadastroItem getInstance() {
