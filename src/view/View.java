@@ -33,7 +33,7 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
             MaskFormatter mask = new MaskFormatter(formato);
             mask.install(campo);
         } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao formatar o campo numérico");
+            JOptionPane.showMessageDialog(null, "Erro ao formatar o campo");
         }
     }
     
@@ -46,7 +46,7 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
     }
 
     /**
-     * Dispara uma mensagem
+     * Dispara uma mensagem 
      */
     public void showMensagem(String mensagem) {
         JOptionPane.showMessageDialog(this, mensagem);

@@ -72,5 +72,9 @@ public class ControllerItem extends Controller {
     public ArrayList listar() {
         return this.itens.getLista();
     }
+
+    public Dao<Item> getItens() {
+        return itens;
+    }
     
 }
