@@ -64,6 +64,13 @@ public class ViewIndex extends View {
     }
     
     /**
+     * Adiciona a ação de consultar as pessoas
+     */
+    public void adicionaAcaoConsultaPessoas(ActionListener actionListener){
+        this.imConsultarPessoas.addActionListener(actionListener);
+    }
+    
+    /**
      * Adiciona a ação de cadastrar solicitação de abastecimento
      */
     public void adicionaAcaoCadastroSolicitacaoAbastecimento(ActionListener actionListener){
@@ -86,6 +93,7 @@ public class ViewIndex extends View {
         jMenu2 = new javax.swing.JMenu();
         imConsultaItem = new javax.swing.JMenuItem();
         imConsultaUsuario = new javax.swing.JMenuItem();
+        imConsultarPessoas = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -116,6 +124,9 @@ public class ViewIndex extends View {
 
         imConsultaUsuario.setText("Usuários");
         jMenu2.add(imConsultaUsuario);
+
+        imConsultarPessoas.setText("Pessoas");
+        jMenu2.add(imConsultarPessoas);
 
         jMenuBar1.add(jMenu2);
 
@@ -157,6 +168,7 @@ public class ViewIndex extends View {
     private javax.swing.JMenuItem imCadastroUsuario;
     private javax.swing.JMenuItem imConsultaItem;
     private javax.swing.JMenuItem imConsultaUsuario;
+    private javax.swing.JMenuItem imConsultarPessoas;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

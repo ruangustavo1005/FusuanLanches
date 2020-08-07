@@ -36,6 +36,7 @@ public class ControllerMenu extends Controller {
         this.adicionaAcaoConfiguracoes();
         this.adicionaAcaoConsultarItens();
         this.adicionaAcaoConsultarUsuarios();
+        this.adicionaAcaoConsultarPessoas();
         this.adicionaAcaoCadastroSolicitacaoAbastecimento();
     }
     
@@ -108,6 +109,15 @@ public class ControllerMenu extends Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ControllerConsultaUsuarios.getInstance().montaTela();
+            }
+        });
+    }
+    
+    private void adicionaAcaoConsultarPessoas() {
+        this.getInstanceView().adicionaAcaoConsultaPessoas(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControllerConsultaPessoa.getInstance().montaTela();
             }
         });
     }

@@ -4,6 +4,8 @@ import interfaces.ListagemParcial;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 import util.StringUtils;
 
@@ -17,11 +19,15 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
     private Type              modelo;
     private ArrayList<String> atributos;
 
-    public TableModelPadrao(Type modelo) {
-        this.modelo    = modelo;
+    public TableModelPadrao(Type type) {
+        try {
+            this.modelo    = (Type) type.getClass().newInstance();
+        } catch (InstantiationException | IllegalAccessException ex) {
+        }
+//        System.out.println(modelo.toString());
         this.modelos   = new ArrayList<>();
         this.atributos = new ArrayList<>();
-        for (Field field : modelo.getClass().getDeclaredFields()) {
+        for (Field field :  modelo.getClass().getDeclaredFields()) {
             this.atributos.add(field.getName());
         }
         if (modelo instanceof ListagemParcial) {
