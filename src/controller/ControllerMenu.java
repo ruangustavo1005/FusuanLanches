@@ -35,6 +35,7 @@ public class ControllerMenu extends Controller {
         this.adicionaAcaoItemMenuCadastroItem();
         this.adicionaAcaoConfiguracoes();
         this.adicionaAcaoConsultarItens();
+        this.adicionaAcaoConsultarUsuarios();
         this.adicionaAcaoCadastroSolicitacaoAbastecimento();
     }
     
@@ -97,6 +98,13 @@ public class ControllerMenu extends Controller {
                 ControllerConsultaItem.getInstance().montaTela();
             }
         });
+    }
+    
+    /**
+     * Adiciona a ação do botão de consultar usuários
+     */
+    private void adicionaAcaoConsultarUsuarios() {
+        
     }
 
     /**
