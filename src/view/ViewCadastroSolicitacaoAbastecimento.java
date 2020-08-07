@@ -21,8 +21,8 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
     private SolicitacaoAbastecimento solicitacaoAbastecimento;
     
     private ViewCadastroSolicitacaoAbastecimento() {
-        this.tableModelItens            = new TableModelPadrao(new Item());
-        this.tableModelSolicitacaoItens = new TableModelPadrao(new AbastecimentoItem());
+        this.tableModelItens            = new TableModelPadrao(Item.class);
+        this.tableModelSolicitacaoItens = new TableModelPadrao(AbastecimentoItem.class);
         this.solicitacaoAbastecimento   = new SolicitacaoAbastecimento();
         initComponents();
         this.formataCampos();
