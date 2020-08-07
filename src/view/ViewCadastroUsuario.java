@@ -7,6 +7,7 @@ import model.Fornecedor;
 import model.Gerente;
 import model.Pessoa;
 import model.Usuario;
+import util.MD5;
 
 /**
  * View de Cadastro do Usuário
@@ -17,15 +18,16 @@ public class ViewCadastroUsuario extends View {
 
     private static ViewCadastroUsuario instance;
 
-    public static final int TIPO_CLIENTE = 0;
+    public static final int TIPO_CLIENTE    = 0;
     public static final int TIPO_FORNECEDOR = 1;
-    public static final int TIPO_GERENTE = 2;
-    public static final int TIPO_ATENDENTE = 3;
+    public static final int TIPO_GERENTE    = 2;
+    public static final int TIPO_ATENDENTE  = 3;
 
     private ViewCadastroUsuario() {
         initComponents();
-        this.formataCampo(txtTelefone, CAMPO_TELEFONE, '0');
         this.txtTelefone.setEnabled(false);
+        this.formataCampo(txtDataNascimento, CAMPO_DATA,     '0');
+        this.formataCampo(txtTelefone,       CAMPO_TELEFONE, '0');
     }
 
     public static ViewCadastroUsuario getInstance() {
@@ -37,9 +39,8 @@ public class ViewCadastroUsuario extends View {
 
     @Override
     public Usuario getModelFromTela() {
-        String senha = new String(txtSenha.getPassword());
-        String confirm = new String(txtConfirmarSenha.getPassword());
-        return new Usuario(this.getInstancePessoaFromTipo(), txtLogin.getText(), new String(txtSenha.getPassword()));
+        String senha   = MD5.md5(new String(txtSenha.getPassword()));
+        return new Usuario(this.getInstancePessoaFromTipo(), txtLogin.getText(), senha);
     }
     
     public String getSenhaConfirmacao() {

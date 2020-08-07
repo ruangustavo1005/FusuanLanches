@@ -1,6 +1,7 @@
 package view;
 
 import java.util.ArrayList;
+import model.Atendente;
 import model.Item;
 
 /**
@@ -20,7 +21,13 @@ public class ViewCadastroComanda extends View {
     
     public void setListaItens(ArrayList<Item> itens) {
         for (Item item : itens) {
-            this.listItens.addItem(item);
+            this.listItens.addItem(item.getNome());
+        }
+    }
+    
+    public void setListaAtendentes(ArrayList<Atendente> atendentes) {
+        for(Atendente atendente : atendentes) {
+            this.listAtendente.addItem(atendente.getNome());
         }
     }
     
@@ -58,11 +65,7 @@ public class ViewCadastroComanda extends View {
 
         jLabel2.setText("Atendente:");
 
-        listAtendente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel3.setText("Cliente:");
-
-        listCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel4.setText("Data:");
 
@@ -164,7 +167,7 @@ public class ViewCadastroComanda extends View {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> listAtendente;
     private javax.swing.JComboBox<String> listCliente;
-    private javax.swing.JComboBox<Item> listItens;
+    private javax.swing.JComboBox<String> listItens;
     private javax.swing.JFormattedTextField txtData;
     private javax.swing.JFormattedTextField txtNumero;
     // End of variables declaration//GEN-END:variables

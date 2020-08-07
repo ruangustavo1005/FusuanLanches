@@ -4,8 +4,12 @@ import dao.Dao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import model.Item;
+import model.Atendente;
+import model.Cliente;
+import model.Fornecedor;
+import model.Gerente;
 import model.Usuario;
+import util.MD5;
 import view.ViewCadastroUsuario;
 
 /**
@@ -29,7 +33,6 @@ public class ControllerUsuario extends Controller {
         if (instance == null) {
             instance = new ControllerUsuario();
         }
-        
         return instance;
     }
     
@@ -62,8 +65,11 @@ public class ControllerUsuario extends Controller {
         });
     }
     
+    /**
+     * Valida se as senhas são iguais
+     */
     private boolean senhasIguais() {
-        return getInstanceView().getModelFromTela().getSenha().equals(getInstanceView().getSenhaConfirmacao());
+        return getInstanceView().getModelFromTela().getSenha().equals(MD5.md5(getInstanceView().getSenhaConfirmacao()));
     }
     
     /**
@@ -88,7 +94,17 @@ public class ControllerUsuario extends Controller {
      * @return boolean
      */
     private boolean salvar() {
-        this.usuarios.add(this.getInstanceView().getModelFromTela());
+        Usuario usuario = this.getInstanceView().getModelFromTela();
+        this.usuarios.add(usuario);
+        if(usuario.getPessoa() instanceof Cliente){
+            ControllerCliente.getInstance().salvarCliente((Cliente)usuario.getPessoa());
+        }else if(usuario.getPessoa() instanceof Gerente){
+            ControllerGerente.getInstance().salvarGerente((Gerente)usuario.getPessoa());
+        }else if(usuario.getPessoa() instanceof Fornecedor) {
+            ControllerFornecedor.getInstance().salvarFornecedor((Fornecedor)usuario.getPessoa());
+        }else if (usuario.getPessoa() instanceof Atendente){
+            ControllerAtendente.getInstance().salvarAtendente((Atendente)usuario.getPessoa());
+        }
         return true;
     }
     
@@ -96,7 +112,7 @@ public class ControllerUsuario extends Controller {
         return this.usuarios.getLista();
     }
 
-    public Dao<Usuario> getItens() {
+    public Dao<Usuario> getUsuarios() {
         return usuarios;
     }
 

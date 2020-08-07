@@ -10,4 +10,9 @@ public class Atendente extends Pessoa {
         super(cpfCnpj, nome, email);
     }
     
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+    
 }
