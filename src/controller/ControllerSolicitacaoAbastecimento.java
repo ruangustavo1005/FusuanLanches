@@ -3,6 +3,7 @@ package controller;
 import dao.Dao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.AbastecimentoItem;
 import model.Item;
 import model.SolicitacaoAbastecimento;
 import view.TableModelPadrao;
@@ -42,7 +43,25 @@ public class ControllerSolicitacaoAbastecimento extends Controller {
         this.getInstanceView().adicionaAcaoAdicionarItem(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TableModelPadrao<Item> tableModel = getInstanceView().getTableModelItens();
+                int indice     = getInstanceView().getTbItens().getSelectedRow(),
+                    quantidade = getInstanceView().getQuantidade();
+                
+                if (indice < 0) {
+                    getInstanceView().showMensagem("Selecione um item!");
+                }
+                else if (quantidade == 0) {
+                    getInstanceView().showMensagem("Informe uma quantidade válida!");
+                }
+                else {
+                    AbastecimentoItem abastecimentoItem = new AbastecimentoItem();
+
+                    abastecimentoItem.setItem(getInstanceView().getTableModelItens().get(indice));
+                    abastecimentoItem.setQuantidade(quantidade);
+                    abastecimentoItem.setSolicitacaoAbastecimento(new SolicitacaoAbastecimento());
+
+                    getInstanceView().getTableModelSolicitacaoItens().getModelos().add(abastecimentoItem);
+                    getInstanceView().getTableModelSolicitacaoItens().fireTableRowsInserted(indice, indice);
+                }
             }
         });
     }

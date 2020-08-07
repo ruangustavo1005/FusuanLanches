@@ -69,13 +69,7 @@ public class SolicitacaoAbastecimento {
 
     @Override
     public String toString() {
-        String retorno = "Solicitacao de Abastecimento: Numero: " + numero + ", Gerente: " + gerente + ", Fornecedor: " + fornecedor + ", Data: " + data + ", Data Limite: " + dataLimite;
-        
-        for (AbastecimentoItem abastecimentoItem : this.getItens()) {
-            retorno += '\n' + abastecimentoItem.toString();
-        }
-        
-        return retorno;
+        return numero + " - " + fornecedor + "(" + data + " - " + dataLimite + ")";
     }
     
 }

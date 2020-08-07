@@ -1,10 +1,13 @@
 package model;
 
+import interfaces.ListagemParcial;
+import java.util.ArrayList;
+
 /**
  * Modelo de relacionamento soclitação de abastecimento x item
  * @author Ruan
  */
-public class AbastecimentoItem {
+public class AbastecimentoItem implements ListagemParcial {
     
     private Item                     item;
     private SolicitacaoAbastecimento solicitacaoAbastecimento;
@@ -47,6 +50,13 @@ public class AbastecimentoItem {
     @Override
     public String toString() {
         return "Abastecimento x Item: " + "Item: " + item + ", SolicitacaoAbastecimento: " + solicitacaoAbastecimento + ", Quantidade: " + quantidade;
+    }
+
+    @Override
+    public ArrayList<String> getCamposIgnorar() {
+        ArrayList<String> camposIgnorar = new ArrayList<>();
+        camposIgnorar.add("solicitacaoAbastecimento");
+        return camposIgnorar;
     }
 
 }

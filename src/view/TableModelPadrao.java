@@ -1,5 +1,7 @@
 package view;
 
+import interfaces.ListagemParcial;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
@@ -11,16 +13,22 @@ import util.StringUtils;
  */
 public class TableModelPadrao<Type> extends AbstractTableModel {
     
-    private ArrayList<Type> modelos;
-    private Type            modelo;
+    private ArrayList<Type>   modelos;
+    private Type              modelo;
+    private ArrayList<String> atributos;
 
     public TableModelPadrao(Type modelo) {
-        this.modelo = modelo;
-        this.modelos = new ArrayList<>();
-    }
-
-    public TableModelPadrao(ArrayList<Type> modelos) {
-        this.modelos = modelos;
+        this.modelo    = modelo;
+        this.modelos   = new ArrayList<>();
+        this.atributos = new ArrayList<>();
+        for (Field field : modelo.getClass().getDeclaredFields()) {
+            this.atributos.add(field.getName());
+        }
+        if (modelo instanceof ListagemParcial) {
+            for (String atributo : ((ListagemParcial) modelo).getCamposIgnorar()) {
+                this.atributos.remove(atributo);
+            }
+        }
     }
     
     public ArrayList<Type> getModelos() {
@@ -65,17 +73,11 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
     }
     
     protected int getQuantidadeAtributos() {
-        if (this.modelo != null) {
-            return this.modelo.getClass().getDeclaredFields().length;
-        }
-        return this.modelos.get(0).getClass().getDeclaredFields().length;
+        return this.atributos.size();
     }
 
     protected String getNomeAtributo(int pos) {
-        if (this.modelo != null) {
-            return this.modelo.getClass().getDeclaredFields()[pos].getName();
-        }
-        return this.modelos.get(0).getClass().getDeclaredFields()[pos].getName();
+        return this.atributos.get(pos);
     }
     
     protected Object getAtributo(Type model, int pos){

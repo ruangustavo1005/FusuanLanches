@@ -2,10 +2,12 @@ package view;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JTable;
 import model.AbastecimentoItem;
 import model.Fornecedor;
 import model.Item;
 import model.SolicitacaoAbastecimento;
+import util.NumberUtils;
 
 /**
  *
@@ -19,9 +21,9 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
     
     private ViewCadastroSolicitacaoAbastecimento() {
         this.tableModelItens            = new TableModelPadrao(new Item());
-        this.tableModelSolicitacaoItens = new TableModelAbastecimentoItem(new AbastecimentoItem());
-        this.formataCampos();
+        this.tableModelSolicitacaoItens = new TableModelPadrao(new AbastecimentoItem());
         initComponents();
+        this.formataCampos();
     }
 
     public static ViewCadastroSolicitacaoAbastecimento getInstance() {
@@ -41,11 +43,8 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
         this.tableModelItens.setModelos(itens);
     }
     
-    /**
-     * Aplica as formatações nos campos em tela
-     */
     private void formataCampos() {
-        this.formataCampo(txtQuantidade, CAMPO_VALOR, '0');
+        this.formataCampo(txtQuantidade, CAMPO_CODIGO, '0');
     }
     
     @SuppressWarnings("unchecked")
@@ -160,12 +159,24 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
         return tableModelItens;
     }
 
-    public TableModelAbastecimentoItem getTableModelSolicitacaoItens() {
+    public TableModelPadrao<AbastecimentoItem> getTableModelSolicitacaoItens() {
         return tableModelSolicitacaoItens;
     }
+
+    public JTable getTbItens() {
+        return tbItens;
+    }
+
+    public JTable getTbSolicitacaoItens() {
+        return tbSolicitacaoItens;
+    }
+
+    public int getQuantidade() {
+        return NumberUtils.parseInt(this.txtQuantidade.getText());
+    }
     
-    private TableModelPadrao<Item> tableModelItens;
-    private TableModelAbastecimentoItem tableModelSolicitacaoItens;
+    private TableModelPadrao<Item>              tableModelItens;
+    private TableModelPadrao<AbastecimentoItem> tableModelSolicitacaoItens;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarItem;
