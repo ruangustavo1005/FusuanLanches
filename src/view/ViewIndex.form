@@ -73,7 +73,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnNovaComanda" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="166" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnCadastroSolicitacaoAbastecimento" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="btnConfiguracoes" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -89,7 +91,10 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnConfiguracoes" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnConfiguracoes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCadastroSolicitacaoAbastecimento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="232" max="32767" attributes="0"/>
@@ -106,6 +111,11 @@
     <Component class="javax.swing.JButton" name="btnConfiguracoes">
       <Properties>
         <Property name="text" type="java.lang.String" value="Configura&#xe7;&#xf5;es"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCadastroSolicitacaoAbastecimento">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nova Solicita&#xe7;&#xe3;o de Abastecimento"/>
       </Properties>
     </Component>
   </SubComponents>

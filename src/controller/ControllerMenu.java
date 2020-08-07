@@ -35,6 +35,7 @@ public class ControllerMenu extends Controller {
         this.adicionaAcaoItemMenuCadastroItem();
         this.adicionaAcaoConfiguracoes();
         this.adicionaAcaoConsultarItens();
+        this.adicionaAcaoCadastroSolicitacaoAbastecimento();
     }
     
     /**
@@ -94,6 +95,18 @@ public class ControllerMenu extends Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ControllerConsultaItem.getInstance().montaTela();
+            }
+        });
+    }
+
+    /**
+     * Adiciona a ação do botão de cadastrar solicitações de abastecimento
+     */
+    private void adicionaAcaoCadastroSolicitacaoAbastecimento() {
+        this.getInstanceView().adicionaAcaoCadastroSolicitacaoAbastecimento(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControllerSolicitacaoAbastecimento.getInstance().montaTela();
             }
         });
     }

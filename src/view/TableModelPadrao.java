@@ -31,6 +31,19 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
         this.modelos = modelos;
     }
 
+    public void remove(int i) {
+        modelos.remove(i);
+        fireTableRowsDeleted(i, i);
+    }
+
+    public void att(int i) {
+        fireTableRowsUpdated(i, i);
+    }
+
+    public Type get(int i) {
+        return modelos.get(i);
+    }
+    
     @Override
     public int getRowCount() {
         return this.getModelos().size();
@@ -51,21 +64,21 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
         return StringUtils.ucfirst(this.getNomeAtributo(column));
     }
     
-    private int getQuantidadeAtributos() {
+    protected int getQuantidadeAtributos() {
         if (this.modelo != null) {
             return this.modelo.getClass().getDeclaredFields().length;
         }
         return this.modelos.get(0).getClass().getDeclaredFields().length;
     }
 
-    private String getNomeAtributo(int pos) {
+    protected String getNomeAtributo(int pos) {
         if (this.modelo != null) {
             return this.modelo.getClass().getDeclaredFields()[pos].getName();
         }
         return this.modelos.get(0).getClass().getDeclaredFields()[pos].getName();
     }
     
-    private Object getAtributo(Type model, int pos){
+    protected Object getAtributo(Type model, int pos){
         Object retorno = null;
         String nome   = this.getNomeAtributo(pos);
         String metodo = "get" + StringUtils.ucfirst(nome);
