@@ -18,9 +18,10 @@ import javax.swing.text.MaskFormatter;
  */
 public abstract class View extends javax.swing.JFrame implements Runnable {
 
-    public static final String CAMPO_CODIGO  = "####";
-    public static final String CAMPO_VALOR   = "###,##";
-    public static final String CAMPO_DATA    = "##/##/####";
+    public static final String CAMPO_CODIGO   = "####";
+    public static final String CAMPO_VALOR    = "###,##";
+    public static final String CAMPO_DATA     = "##/##/####";
+    public static final String CAMPO_TELEFONE = "(##)#####-####";
     
     protected View() {
         initComponents();

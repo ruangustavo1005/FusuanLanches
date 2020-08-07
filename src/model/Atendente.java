@@ -6,4 +6,8 @@ package model;
  */
 public class Atendente extends Pessoa {
     
+    public Atendente(String cpfCnpj, String nome, String email) {
+        super(cpfCnpj, nome, email);
+    }
+    
 }
