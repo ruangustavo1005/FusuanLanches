@@ -12,7 +12,7 @@ public class ViewConsultaItem extends View {
     private static ViewConsultaItem instance;
 
     private ViewConsultaItem() {
-        this.tableModel = new TableModelPadrao(Item.class);
+        this.tableModel = new TableModelPadrao(new Item());
         initComponents();
     }
 

@@ -19,7 +19,7 @@ public class ViewConsultaUsuario extends View {
     }
     
     private ViewConsultaUsuario() {
-        this.tableModel = new TableModelPadrao(Usuario.class);
+        this.tableModel = new TableModelPadrao(new Usuario());
         initComponents();
     }
 

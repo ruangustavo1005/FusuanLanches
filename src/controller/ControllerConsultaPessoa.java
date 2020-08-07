@@ -23,7 +23,6 @@ public class ControllerConsultaPessoa extends Controller {
     
     @Override
     public void montaTela() {
-        this.getInstanceView().setDadosTableModel(ControllerPessoa.getInstance().listar());
         super.montaTela();
     }
     

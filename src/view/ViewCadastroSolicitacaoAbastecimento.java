@@ -21,8 +21,8 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
     private SolicitacaoAbastecimento solicitacaoAbastecimento;
     
     private ViewCadastroSolicitacaoAbastecimento() {
-        this.tableModelItens            = new TableModelPadrao(Item.class);
-        this.tableModelSolicitacaoItens = new TableModelPadrao(AbastecimentoItem.class);
+        this.tableModelItens            = new TableModelPadrao(new Item());
+        this.tableModelSolicitacaoItens = new TableModelPadrao(new AbastecimentoItem());
         this.solicitacaoAbastecimento   = new SolicitacaoAbastecimento();
         initComponents();
         this.formataCampos();
@@ -40,6 +40,9 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
     public SolicitacaoAbastecimento getModelFromTela() {
         this.solicitacaoAbastecimento.setData(this.txtData.getText());
         this.solicitacaoAbastecimento.setDataLimite(this.txtDataLimite.getText());
+        this.solicitacaoAbastecimento.setFornecedor((Fornecedor) this.cbFornecedor.getSelectedItem());
+        this.solicitacaoAbastecimento.setGerente((Gerente) this.cbGerente.getSelectedItem());
+        this.solicitacaoAbastecimento.setItens(this.tableModelSolicitacaoItens.getModelos());
         return this.solicitacaoAbastecimento;
     }
 

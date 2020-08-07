@@ -67,7 +67,7 @@ public class ViewIndex extends View {
      * Adiciona a ação de consultar as pessoas
      */
     public void adicionaAcaoConsultaPessoas(ActionListener actionListener){
-        this.imConsultarPessoas.addActionListener(actionListener);
+//        this.imConsultarPessoas.addActionListener(actionListener);
     }
     
     /**

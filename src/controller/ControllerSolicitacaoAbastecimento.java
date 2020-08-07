@@ -4,9 +4,7 @@ import dao.Dao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.AbastecimentoItem;
-import model.Item;
 import model.SolicitacaoAbastecimento;
-import view.TableModelPadrao;
 import view.ViewCadastroSolicitacaoAbastecimento;
 
 /**
@@ -98,9 +96,19 @@ public class ControllerSolicitacaoAbastecimento extends Controller {
     }
     
     private boolean salvar(SolicitacaoAbastecimento solicitacaoAbastecimento) {
+        solicitacaoAbastecimento.setNumero(this.dao.getLista().size() + 1);
+        for (AbastecimentoItem abastecimentoItem : solicitacaoAbastecimento.getItens()) {
+            abastecimentoItem.setSolicitacaoAbastecimento(solicitacaoAbastecimento);
+        }
         this.dao.add(solicitacaoAbastecimento);
-        
         return true;
+    }
+
+    @Override
+    public void montaTela() {
+        super.montaTela();
+        getInstanceView().setaDadosComboBoxGerente(ControllerGerente.getInstance().listarGerentes());
+        getInstanceView().setaDadosComboBoxFornecedor(ControllerFornecedor.getInstance().listarFornecedores());
     }
     
     @Override
