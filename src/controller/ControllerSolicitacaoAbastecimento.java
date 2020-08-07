@@ -85,7 +85,14 @@ public class ControllerSolicitacaoAbastecimento extends Controller {
         this.getInstanceView().adicionaAcaoRemover(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                int indice = getInstanceView().getTbSolicitacaoItens().getSelectedRow();
+                
+                if (indice < 0) {
+                    getInstanceView().showMensagem("Selecione um item da solicitação!");
+                }
+                else {
+                    getInstanceView().getTableModelSolicitacaoItens().remove(indice);
+                }
             }
         });
     }
