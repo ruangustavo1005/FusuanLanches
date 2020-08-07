@@ -1,12 +1,14 @@
 package model;
 
+import interfaces.ListagemParcial;
+import java.util.ArrayList;
 import util.MD5;
 
 /**
  * Modelo de usuário geral do sistema
  * @author Ruan
  */
-public class Usuario {
+public class Usuario implements ListagemParcial {
     
     private Pessoa pessoa;
     private String login;
@@ -49,6 +51,13 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario: Login: " + login;
+    }
+
+    @Override
+    public ArrayList<String> getCamposIgnorar() {
+        ArrayList<String> campos = new ArrayList<>();
+        campos.add("senha");
+        return campos;
     }
     
 }
