@@ -1,5 +1,7 @@
 package controller;
 
+import view.ViewConsultaUsuario;
+
 /**
  * Controlador da consulta dos usuários
  * @author Leonardo Alex Fusinato <leonardo.fusinato@edu.udesc.br>
@@ -21,7 +23,7 @@ public class ControllerConsultaUsuarios extends Controller {
     
     @Override
     public void montaTela() {
-        this.getInstanceView().setDadosTableModel(ControllerItem.getInstance().listar());
+        this.getInstanceView().setDadosTableModel(ControllerUsuario.getInstance().listar());
         super.montaTela();
     }
     

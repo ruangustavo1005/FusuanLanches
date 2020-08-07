@@ -104,7 +104,12 @@ public class ControllerMenu extends Controller {
      * Adiciona a ação do botão de consultar usuários
      */
     private void adicionaAcaoConsultarUsuarios() {
-        
+        this.getInstanceView().adicionaAcaoConsultaUsuarios(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControllerConsultaUsuarios.getInstance().montaTela();
+            }
+        });
     }
 
     /**
