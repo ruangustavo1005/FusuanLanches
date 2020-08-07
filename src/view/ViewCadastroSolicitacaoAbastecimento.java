@@ -155,6 +155,14 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
     public void adicionaAcaoRemover(ActionListener actionListener) {
         this.btnRemover.addActionListener(actionListener);
     }
+
+    public TableModelPadrao<Item> getTableModelItens() {
+        return tableModelItens;
+    }
+
+    public TableModelAbastecimentoItem getTableModelSolicitacaoItens() {
+        return tableModelSolicitacaoItens;
+    }
     
     private TableModelPadrao<Item> tableModelItens;
     private TableModelAbastecimentoItem tableModelSolicitacaoItens;

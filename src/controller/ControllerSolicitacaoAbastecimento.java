@@ -3,7 +3,9 @@ package controller;
 import dao.Dao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.Item;
 import model.SolicitacaoAbastecimento;
+import view.TableModelPadrao;
 import view.ViewCadastroSolicitacaoAbastecimento;
 
 /**
@@ -40,7 +42,7 @@ public class ControllerSolicitacaoAbastecimento extends Controller {
         this.getInstanceView().adicionaAcaoAdicionarItem(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                TableModelPadrao<Item> tableModel = getInstanceView().getTableModelItens();
             }
         });
     }
@@ -50,7 +52,7 @@ public class ControllerSolicitacaoAbastecimento extends Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (salvar(getInstanceView().getModelFromTela())) {
-                    getInstanceView().showMensagem("Solicação de Abastecimento incluída com sucesso!");
+                    getInstanceView().showMensagem("Solicitação de Abastecimento incluída com sucesso!");
                     getInstanceView().dispose();
                 }
                 else {
