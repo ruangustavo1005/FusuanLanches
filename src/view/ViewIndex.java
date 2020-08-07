@@ -55,6 +55,13 @@ public class ViewIndex extends View {
     public void adicionaAcaoConsultaItem(ActionListener actionListener){
         this.imConsultaItem.addActionListener(actionListener);
     }
+    
+    /**
+     * Adiciona a ação de cadastrar solicitação de abastecimento
+     */
+    public void adicionaAcaoCadastroSolicitacaoAbastecimento(ActionListener actionListener){
+        this.btnCadastroSolicitacaoAbastecimento.addActionListener(actionListener);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -64,6 +71,7 @@ public class ViewIndex extends View {
         jMenuItem1 = new javax.swing.JMenuItem();
         btnNovaComanda = new javax.swing.JButton();
         btnConfiguracoes = new javax.swing.JButton();
+        btnCadastroSolicitacaoAbastecimento = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastros = new javax.swing.JMenu();
         imCadastroUsuario = new javax.swing.JMenuItem();
@@ -80,6 +88,8 @@ public class ViewIndex extends View {
         btnNovaComanda.setText("Nova Comanda");
 
         btnConfiguracoes.setText("Configurações");
+
+        btnCadastroSolicitacaoAbastecimento.setText("Nova Solicitação de Abastecimento");
 
         menuCadastros.setText("Cadastros");
 
@@ -107,7 +117,9 @@ public class ViewIndex extends View {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnNovaComanda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCadastroSolicitacaoAbastecimento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConfiguracoes)
                 .addContainerGap())
         );
@@ -120,7 +132,9 @@ public class ViewIndex extends View {
                         .addComponent(btnNovaComanda))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnConfiguracoes)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnConfiguracoes)
+                            .addComponent(btnCadastroSolicitacaoAbastecimento))))
                 .addContainerGap(232, Short.MAX_VALUE))
         );
 
@@ -129,6 +143,7 @@ public class ViewIndex extends View {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCadastroSolicitacaoAbastecimento;
     private javax.swing.JButton btnConfiguracoes;
     private javax.swing.JButton btnNovaComanda;
     private javax.swing.JMenuItem imCadastroItem;

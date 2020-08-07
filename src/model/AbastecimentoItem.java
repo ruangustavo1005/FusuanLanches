@@ -6,17 +6,17 @@ package model;
  */
 public class AbastecimentoItem {
     
-    private Item    item;
-    private Comanda comanda;
-    private int     quantidade;
+    private Item                     item;
+    private SolicitacaoAbastecimento solicitacaoAbastecimento;
+    private int                      quantidade;
 
     public AbastecimentoItem() {
         
     }
 
-    public AbastecimentoItem(Item item, Comanda comanda, int quantidade) {
+    public AbastecimentoItem(Item item, SolicitacaoAbastecimento solicitacaoAbastecimento, int quantidade) {
         this.item = item;
-        this.comanda = comanda;
+        this.solicitacaoAbastecimento = solicitacaoAbastecimento;
         this.quantidade = quantidade;
     }
 
@@ -28,12 +28,12 @@ public class AbastecimentoItem {
         this.item = item;
     }
 
-    public Comanda getComanda() {
-        return comanda;
+    public SolicitacaoAbastecimento getSolicitacaoAbastecimento() {
+        return solicitacaoAbastecimento;
     }
 
-    public void setComanda(Comanda comanda) {
-        this.comanda = comanda;
+    public void setSolicitacaoAbastecimento(SolicitacaoAbastecimento solicitacaoAbastecimento) {
+        this.solicitacaoAbastecimento = solicitacaoAbastecimento;
     }
 
     public int getQuantidade() {
@@ -46,7 +46,7 @@ public class AbastecimentoItem {
 
     @Override
     public String toString() {
-        return "Abastecimento x Item: " + "Item: " + item + ", Comanda: " + comanda + ", Quantidade: " + quantidade;
+        return "Abastecimento x Item: " + "Item: " + item + ", SolicitacaoAbastecimento: " + solicitacaoAbastecimento + ", Quantidade: " + quantidade;
     }
 
 }
