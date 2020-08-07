@@ -29,7 +29,12 @@ public class ControllerComanda extends Controller{
      * Seta as listas nos campos
      */
     private void setListasTela(){
+        this.setaListaAtendentes();
         this.setaListaItens();
+    }
+    
+    private void setaListaAtendentes() {
+        getInstanceView().setListaAtendentes(ControllerAtendente.getInstance().listarAtendentes());
     }
     
     private void setaListaItens(){
