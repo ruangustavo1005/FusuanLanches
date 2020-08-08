@@ -80,7 +80,10 @@ public class ControllerLogin extends Controller {
         boolean retorno = false;
         
         for (Usuario usuarioSalvo : ControllerUsuario.getInstance().listar()) {
-            retorno = retorno || (usuarioSalvo.getLogin().equals(usuario.getLogin()) && usuarioSalvo.getSenha().equals(usuario.getSenha()));
+            if (usuarioSalvo.getLogin().equals(usuario.getLogin()) && usuarioSalvo.getSenha().equals(usuario.getSenha())) {
+                retorno = true;
+                break;
+            }
         }
         
         if (usuario.getLogin().equals("123") && usuario.getSenha().equals(MD5.md5("123"))) {

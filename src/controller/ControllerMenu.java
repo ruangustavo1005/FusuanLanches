@@ -45,6 +45,7 @@ public class ControllerMenu extends Controller {
         this.adicionaAcaoConsultarPessoas();
         this.adicionaAcaoCadastroSolicitacaoAbastecimento();
         this.adicionaAcaoConsultaSolicitacoesAbastecimento();
+        this.adicionaAcaoLogout();
     }
     
     /**
@@ -143,7 +144,6 @@ public class ControllerMenu extends Controller {
         });
     }
     
-
     /**
      * Adiciona a ação do botão de consultar solicitações de abastecimento
      */
@@ -152,6 +152,20 @@ public class ControllerMenu extends Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ControllerConsultaSolicitacaoAbastecimento.getInstance().montaTela();
+            }
+        });
+    }
+    
+    /**
+     * Adiciona a ação do botão de sair (logout)
+     */
+    private void adicionaAcaoLogout() {
+        this.getInstanceView().adicionaAcaoLogout(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getInstanceView().dispose();
+                ControllerLogin.getInstance().setUsuarioLogado(null);
+                ControllerLogin.getInstance().montaTela();
             }
         });
     }
