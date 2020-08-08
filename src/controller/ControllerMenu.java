@@ -84,7 +84,6 @@ public class ControllerMenu extends Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ControllerConfiguracoes.getInstance().montaTela();
-                
             }
         });
     }
@@ -113,6 +112,9 @@ public class ControllerMenu extends Controller {
         });
     }
     
+    /**
+     * Adiciona a ação de consulta de pessoas
+     */
     private void adicionaAcaoConsultarPessoas() {
         this.getInstanceView().adicionaAcaoConsultaPessoas(new ActionListener() {
             @Override
@@ -138,4 +140,5 @@ public class ControllerMenu extends Controller {
     protected ViewIndex getInstanceView() {
         return ViewIndex.getInstance();
     }
+    
 }
