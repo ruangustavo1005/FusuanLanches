@@ -83,6 +83,13 @@ public class ViewIndex extends View {
     public void adicionaAcaoConsultaSolicitacoesAbastecimento(ActionListener actionListener){
         this.imConsultaSolicitacoesAbastecimento.addActionListener(actionListener);
     }
+    
+    /**
+     * Adiciona a ação de logout
+     */
+    public void adicionaAcaoLogout(ActionListener actionListener){
+        this.imLogout.addActionListener(actionListener);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -111,6 +118,7 @@ public class ViewIndex extends View {
         imConsultaSolicitacoesAbastecimento = new javax.swing.JMenuItem();
         mnOutros = new javax.swing.JMenu();
         imConfiguracoes = new javax.swing.JMenuItem();
+        imLogout = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -178,6 +186,9 @@ public class ViewIndex extends View {
         imConfiguracoes.setText("Configurações");
         mnOutros.add(imConfiguracoes);
 
+        imLogout.setText("Sair");
+        mnOutros.add(imLogout);
+
         jMenuBar1.add(mnOutros);
 
         setJMenuBar(jMenuBar1);
@@ -244,6 +255,7 @@ public class ViewIndex extends View {
     private javax.swing.JMenuItem imConsultaSolicitacoesAbastecimento;
     private javax.swing.JMenuItem imConsultaUsuario;
     private javax.swing.JMenuItem imConsultarPessoas;
+    private javax.swing.JMenuItem imLogout;
     private javax.swing.JButton jButton1;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel2;

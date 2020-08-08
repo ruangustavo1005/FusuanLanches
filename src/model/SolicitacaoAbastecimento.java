@@ -121,6 +121,7 @@ public class SolicitacaoAbastecimento implements ListagemParcial {
         campos.add("SITUACAO_ATENDIDA");
         campos.add("SITUACAO_VENCIDA");
         campos.add("SITUACAO_CANCELADA");
+        campos.add("itens");
         return campos;
     }
     
