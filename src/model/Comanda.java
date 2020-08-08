@@ -79,13 +79,6 @@ public class Comanda {
     @Override
     public String toString() {
         return numero + "";
-//        String retorno = "Comanda: Numero: " + numero + ", Atendente: " + atendente + ", Cliente: " + cliente + ", Data: " + data + ", Mesa:" + mesa;
-//
-//        for (ComandaItem comandaItem : this.getItens()) {
-//            retorno += '\n' + comandaItem.toString();
-//        }
-//        
-//        return retorno;
     }
     
     

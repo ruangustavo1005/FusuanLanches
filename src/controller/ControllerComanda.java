@@ -41,6 +41,7 @@ public class ControllerComanda extends Controller{
      */
     private void adicionaAcoesTela() {
         this.adicionaAcaoAddItem();
+        this.adicionaAcaoRemoveItem();
     }
     
     /**
@@ -67,6 +68,25 @@ public class ControllerComanda extends Controller{
 
                     getInstanceView().getTableModelComandaItem().getModelos().add(comandaItem);
                     getInstanceView().getTableModelComandaItem().fireTableRowsInserted(indice, indice);
+                }
+            }
+        });
+    }
+    
+    /**
+     * Adiciona a ação para remover o item
+     */
+    private void adicionaAcaoRemoveItem() {
+        this.getInstanceView().adicionaAcaoRemoveItem(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                int indice = getInstanceView().getListaItens().getSelectedIndex();
+                
+                if (indice < 0) {
+                    getInstanceView().showMensagem("Selecione um item da solicitação!");
+                }
+                else {
+                    getInstanceView().getTableModelComandaItem().remove(indice);
                 }
             }
         });
