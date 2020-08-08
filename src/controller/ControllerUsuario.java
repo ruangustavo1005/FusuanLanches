@@ -96,13 +96,13 @@ public class ControllerUsuario extends Controller {
     private boolean salvar() {
         Usuario usuario = this.getInstanceView().getModelFromTela();
         this.usuarios.add(usuario);
-        if(usuario.getPessoa() instanceof Cliente){
+        if(usuario.getPessoa() instanceof Cliente) {
             ControllerCliente.getInstance().salvarCliente((Cliente)usuario.getPessoa());
-        }else if(usuario.getPessoa() instanceof Gerente){
+        }else if(usuario.getPessoa() instanceof Gerente) {
             ControllerGerente.getInstance().salvarGerente((Gerente)usuario.getPessoa());
         }else if(usuario.getPessoa() instanceof Fornecedor) {
             ControllerFornecedor.getInstance().salvarFornecedor((Fornecedor)usuario.getPessoa());
-        }else if (usuario.getPessoa() instanceof Atendente){
+        }else if(usuario.getPessoa() instanceof Atendente) {
             ControllerAtendente.getInstance().salvarAtendente((Atendente)usuario.getPessoa());
         }
         return true;

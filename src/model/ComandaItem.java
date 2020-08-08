@@ -1,10 +1,13 @@
 package model;
 
+import interfaces.ListagemParcial;
+import java.util.ArrayList;
+
 /**
  * Modelo de relacionamento de item x comanda
  * @author Ruan
  */
-public class ComandaItem {
+public class ComandaItem implements ListagemParcial {
     
     private Item    item;
     private Comanda comanda;
@@ -61,6 +64,13 @@ public class ComandaItem {
     @Override
     public String toString() {
         return "ComandaItem: Item: " + item + ", Comanda: " + comanda + ", Quantidade: " + quantidade + ", Valor: " + valor;
+    }
+
+    @Override
+    public ArrayList<String> getCamposIgnorar() {
+        ArrayList<String> campos = new ArrayList<>();
+        campos.add("comanda");
+        return campos;
     }
        
 }

@@ -24,7 +24,7 @@ public class ViewConsultaPessoa extends View {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Consulta d ePessoas");
+        setTitle("Consulta de Pessoas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

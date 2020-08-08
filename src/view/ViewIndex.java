@@ -46,7 +46,7 @@ public class ViewIndex extends View {
      * Adiciona a ação de editar configurações
      */
     public void adicionaAcaoConfiguracoes(ActionListener actionListener){
-        this.btnConfiguracoes.addActionListener(actionListener);
+        this.imConfiguracoes.addActionListener(actionListener);
     }
     
     /**
@@ -83,9 +83,16 @@ public class ViewIndex extends View {
 
         jFileChooser1 = new javax.swing.JFileChooser();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         btnNovaComanda = new javax.swing.JButton();
-        btnConfiguracoes = new javax.swing.JButton();
         btnCadastroSolicitacaoAbastecimento = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnVisualizar = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
+        btnRemover = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastros = new javax.swing.JMenu();
         imCadastroUsuario = new javax.swing.JMenuItem();
@@ -94,8 +101,14 @@ public class ViewIndex extends View {
         imConsultaItem = new javax.swing.JMenuItem();
         imConsultaUsuario = new javax.swing.JMenuItem();
         imConsultarPessoas = new javax.swing.JMenuItem();
+        mnOutros = new javax.swing.JMenu();
+        imConfiguracoes = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
+
+        jLabel2.setText("jLabel2");
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fusuan Lanches");
@@ -103,9 +116,28 @@ public class ViewIndex extends View {
 
         btnNovaComanda.setText("Nova Comanda");
 
-        btnConfiguracoes.setText("Configurações");
-
         btnCadastroSolicitacaoAbastecimento.setText("Nova Solicitação de Abastecimento");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        btnVisualizar.setText("Visualizar");
+
+        btnAlterar.setText("Alterar");
+
+        btnRemover.setText("Remover");
+
+        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         menuCadastros.setText("Cadastros");
 
@@ -130,6 +162,13 @@ public class ViewIndex extends View {
 
         jMenuBar1.add(jMenu2);
 
+        mnOutros.setText("Outros");
+
+        imConfiguracoes.setText("Configurações");
+        mnOutros.add(imConfiguracoes);
+
+        jMenuBar1.add(mnOutros);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,23 +176,44 @@ public class ViewIndex extends View {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnNovaComanda)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnVisualizar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAlterar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnRemover)))
+                        .addContainerGap(17, Short.MAX_VALUE))
+                    .addComponent(jSeparator1)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnNovaComanda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCadastroSolicitacaoAbastecimento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnConfiguracoes)
-                .addContainerGap())
+                .addGap(119, 119, 119))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
+                .addComponent(btnCadastroSolicitacaoAbastecimento)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConfiguracoes)
-                    .addComponent(btnCadastroSolicitacaoAbastecimento)
-                    .addComponent(btnNovaComanda))
-                .addContainerGap(252, Short.MAX_VALUE))
+                    .addComponent(btnNovaComanda)
+                    .addComponent(btnVisualizar)
+                    .addComponent(btnAlterar)
+                    .addComponent(btnRemover))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,19 +221,28 @@ public class ViewIndex extends View {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCadastroSolicitacaoAbastecimento;
-    private javax.swing.JButton btnConfiguracoes;
     private javax.swing.JButton btnNovaComanda;
+    private javax.swing.JButton btnRemover;
+    private javax.swing.JButton btnVisualizar;
     private javax.swing.JMenuItem imCadastroItem;
     private javax.swing.JMenuItem imCadastroUsuario;
+    private javax.swing.JMenuItem imConfiguracoes;
     private javax.swing.JMenuItem imConsultaItem;
     private javax.swing.JMenuItem imConsultaUsuario;
     private javax.swing.JMenuItem imConsultarPessoas;
+    private javax.swing.JButton jButton1;
     private javax.swing.JFileChooser jFileChooser1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JMenu menuCadastros;
+    private javax.swing.JMenu mnOutros;
     // End of variables declaration//GEN-END:variables
 
     @Override

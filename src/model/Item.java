@@ -68,7 +68,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item: Código: " + codigo + ", Nome: " + nome + ", Valor: R$" + valor + ", Estoque: " + estoque + ", Validade: " + validade;
+        return + codigo + " - " + nome;
     }
     
 }

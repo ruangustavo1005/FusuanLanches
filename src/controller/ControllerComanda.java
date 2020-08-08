@@ -1,7 +1,10 @@
 package controller;
 
 import dao.Dao;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import model.Comanda;
+import model.ComandaItem;
 import view.ViewCadastroComanda;
 
 /**
@@ -20,9 +23,53 @@ public class ControllerComanda extends Controller{
     protected ViewCadastroComanda getInstanceView() {
         return ViewCadastroComanda.getInstance();
     }
+    
+    public static ControllerComanda getInstance() {
+        if(instance == null){
+            instance = new ControllerComanda();
+        }
+        return instance;
+    }
 
     private ControllerComanda() {
+        this.adicionaAcoesTela();
         this.setListasTela();
+    }
+    
+    /**
+     * Adiciona as ações na tela
+     */
+    private void adicionaAcoesTela() {
+        this.adicionaAcaoAddItem();
+    }
+    
+    /**
+     * Adiciona a ação de adicionar o item
+     */
+    private void adicionaAcaoAddItem() {
+        this.getInstanceView().adicionaAcaoAddItem(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                int indice     = getInstanceView().getListaItens().getSelectedIndex(),
+                    quantidade = getInstanceView().getQuantidade();
+                
+                if (indice < 0) {
+                    getInstanceView().showMensagem("Selecione um item!");
+                }
+                else if(quantidade <= 0) {
+                    getInstanceView().showMensagem("Informe uma quantidade válida!");
+                } else {
+                    ComandaItem comandaItem = new ComandaItem();
+                    comandaItem.setItem(ControllerItem.getInstance().getItens().getLista().get(indice));
+                    comandaItem.setQuantidade(quantidade);
+                    comandaItem.setComanda(new Comanda());
+//                    comandaItem.setValor(indice); TRATAR SAPORRA
+
+                    getInstanceView().getTableModelComandaItem().getModelos().add(comandaItem);
+                    getInstanceView().getTableModelComandaItem().fireTableRowsInserted(indice, indice);
+                }
+            }
+        });
     }
     
     /**
@@ -31,21 +78,28 @@ public class ControllerComanda extends Controller{
     private void setListasTela(){
         this.setaListaAtendentes();
         this.setaListaItens();
+        this.setaListaClientes();
     }
     
+    /**
+     * Seta a lista dos atendentes
+     */
     private void setaListaAtendentes() {
         getInstanceView().setListaAtendentes(ControllerAtendente.getInstance().listarAtendentes());
     }
     
+    /**
+     * Seta a lista dos itens
+     */
     private void setaListaItens(){
         getInstanceView().setListaItens(ControllerItem.getInstance().listar());
     }
-
-    public static ControllerComanda getInstance() {
-        if(instance == null){
-            instance = new ControllerComanda();
-        }
-        return instance;
-    }
     
+    /**
+     * Seta a lista de clientes
+     */
+    private void setaListaClientes() {
+        getInstanceView().setListaClientes(ControllerCliente.getInstance().listarClientes());
+    }
+
 }

@@ -17,10 +17,10 @@ public class ControllerItem extends Controller {
     
     private Item item;
     
-    private Dao<Item> dao;
+    private Dao<Item> itens;
 
     private ControllerItem() {
-        dao = new Dao<>();
+        itens = new Dao<>();
         this.adicionaAcoesTela();
     }
     
@@ -65,16 +65,16 @@ public class ControllerItem extends Controller {
      * @return boolean
      */
     private boolean salvar() {
-        this.dao.add(this.getInstanceView().getModelFromTela());
+        this.itens.add(this.getInstanceView().getModelFromTela());
         return true;
     }
     
     public ArrayList<Item> listar() {
-        return this.dao.getLista();
+        return this.itens.getLista();
     }
 
     public Dao<Item> getItens() {
-        return dao;
+        return itens;
     }
     
 }

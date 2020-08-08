@@ -36,6 +36,7 @@ public class ViewConsultaItem extends View {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consulta de Itens");
 
         jTable1.setModel(tableModel);
         jScrollPane1.setViewportView(jTable1);

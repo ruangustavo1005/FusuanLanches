@@ -11,7 +11,7 @@ import model.SolicitacaoAbastecimento;
 import util.NumberUtils;
 
 /**
- *
+ * View de cadastro de solicitação de abastecimento
  * @author Ruan
  */
 public class ViewCadastroSolicitacaoAbastecimento extends View {
@@ -32,7 +32,6 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
         if (instance == null) {
             instance = new ViewCadastroSolicitacaoAbastecimento();
         }
-        
         return instance;
     }
     
