@@ -22,8 +22,6 @@ public class ControllerComanda extends Controller{
     
     private Dao<Comanda> comandas;
     
-    
-    
     @Override
     protected ViewCadastroComanda getInstanceView() {
         return ViewCadastroComanda.getInstance();

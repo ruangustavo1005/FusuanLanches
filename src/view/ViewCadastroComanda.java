@@ -72,7 +72,7 @@ public class ViewCadastroComanda extends View {
      */
     public void setListaItens(ArrayList<Item> itens) {
         for (Item item : itens) {
-            this.listItens.addItem(item.getNome());
+            this.listItens.addItem(item);
         }
     }
     
@@ -322,7 +322,7 @@ public class ViewCadastroComanda extends View {
     private javax.swing.JTable jTable2;
     private javax.swing.JComboBox<Atendente> listAtendente;
     private javax.swing.JComboBox<Cliente> listCliente;
-    private javax.swing.JComboBox<String> listItens;
+    private javax.swing.JComboBox<Item> listItens;
     private javax.swing.JFormattedTextField txtData;
     private javax.swing.JFormattedTextField txtMesa;
     private javax.swing.JFormattedTextField txtQuantidade;
@@ -332,7 +332,7 @@ public class ViewCadastroComanda extends View {
         return NumberUtils.parseInt(this.txtQuantidade.getText());
     }
     
-    public JComboBox<String> getListaItens() {
+    public JComboBox<Item> getListaItens() {
         return this.listItens;
     }
     
