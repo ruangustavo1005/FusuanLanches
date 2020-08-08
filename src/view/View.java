@@ -43,9 +43,6 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
             else if (c instanceof JRadioButton) {
                 ((JRadioButton) c).setSelected(false);
             }
-            else if (c instanceof JTable) {
-                ((JTable) c).setModel(new DefaultTableModel());
-            }
             else if (c instanceof Container) {
                 this.clearAll((Container) c);
             }
@@ -60,9 +57,6 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
             }
             else if (c instanceof JRadioButton) {
                 ((JRadioButton) c).setSelected(false);
-            }
-            else if (c instanceof JTable) {
-                ((JTable) c).setModel(new DefaultTableModel());
             }
             else if (c instanceof Container) {
                 this.clearAll((Container) c);

@@ -21,8 +21,6 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
     private SolicitacaoAbastecimento solicitacaoAbastecimento;
     
     private ViewCadastroSolicitacaoAbastecimento() {
-        this.tableModelItens            = new TableModelPadrao(new Item());
-        this.tableModelSolicitacaoItens = new TableModelPadrao(new AbastecimentoItem());
         this.solicitacaoAbastecimento   = new SolicitacaoAbastecimento();
         initComponents();
         this.formataCampos();
@@ -244,8 +242,16 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
         return tableModelItens;
     }
 
+    public void setTableModelItens(TableModelPadrao<Item> tableModelItens) {
+        this.tableModelItens = tableModelItens;
+    }
+
     public TableModelPadrao<AbastecimentoItem> getTableModelSolicitacaoItens() {
         return tableModelSolicitacaoItens;
+    }
+
+    public void setTableModelSolicitacaoItens(TableModelPadrao<AbastecimentoItem> tableModelSolicitacaoItens) {
+        this.tableModelSolicitacaoItens = tableModelSolicitacaoItens;
     }
 
     public JTable getTbItens() {
