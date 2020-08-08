@@ -35,7 +35,7 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
         super.dispose();
     }
     
-    private void clearAll() {
+    protected void clearAll() {
         for (Component c : this.getComponents()) {
             if (c instanceof JTextField || c instanceof JTextArea) {
                 ((JTextComponent) c).setText("");
@@ -50,7 +50,7 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
     }
     
 
-    private void clearAll(Container container) {
+    protected void clearAll(Container container) {
         for (Component c : container.getComponents()) {
             if (c instanceof JTextField || c instanceof JTextArea) {
                 ((JTextComponent) c).setText("");

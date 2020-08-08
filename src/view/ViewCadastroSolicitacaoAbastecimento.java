@@ -21,6 +21,8 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
     private SolicitacaoAbastecimento solicitacaoAbastecimento;
     
     private ViewCadastroSolicitacaoAbastecimento() {
+        this.tableModelItens            = new TableModelPadrao(new Item());
+        this.tableModelSolicitacaoItens = new TableModelPadrao(new AbastecimentoItem());
         this.solicitacaoAbastecimento   = new SolicitacaoAbastecimento();
         initComponents();
         this.formataCampos();
@@ -63,6 +65,12 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
         this.formataCampo(txtQuantidade, CAMPO_CODIGO, '0');
         this.formataCampo(txtData,       CAMPO_DATA,   '0');
         this.formataCampo(txtDataLimite, CAMPO_DATA,   '0');
+    }
+
+    @Override
+    protected void clearAll() {
+        super.clearAll();
+        this.tableModelSolicitacaoItens.getModelos().clear();
     }
     
     @SuppressWarnings("unchecked")
@@ -242,16 +250,8 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
         return tableModelItens;
     }
 
-    public void setTableModelItens(TableModelPadrao<Item> tableModelItens) {
-        this.tableModelItens = tableModelItens;
-    }
-
     public TableModelPadrao<AbastecimentoItem> getTableModelSolicitacaoItens() {
         return tableModelSolicitacaoItens;
-    }
-
-    public void setTableModelSolicitacaoItens(TableModelPadrao<AbastecimentoItem> tableModelSolicitacaoItens) {
-        this.tableModelSolicitacaoItens = tableModelSolicitacaoItens;
     }
 
     public JTable getTbItens() {
