@@ -20,6 +20,13 @@ public class ControllerComanda extends Controller{
     protected ViewCadastroComanda getInstanceView() {
         return ViewCadastroComanda.getInstance();
     }
+    
+    public static ControllerComanda getInstance() {
+        if(instance == null){
+            instance = new ControllerComanda();
+        }
+        return instance;
+    }
 
     private ControllerComanda() {
         this.setListasTela();
@@ -31,21 +38,28 @@ public class ControllerComanda extends Controller{
     private void setListasTela(){
         this.setaListaAtendentes();
         this.setaListaItens();
+        this.setaListaClientes();
     }
     
+    /**
+     * Seta a lista dos atendentes
+     */
     private void setaListaAtendentes() {
         getInstanceView().setListaAtendentes(ControllerAtendente.getInstance().listarAtendentes());
     }
     
+    /**
+     * Seta a lista dos itens
+     */
     private void setaListaItens(){
         getInstanceView().setListaItens(ControllerItem.getInstance().listar());
     }
-
-    public static ControllerComanda getInstance() {
-        if(instance == null){
-            instance = new ControllerComanda();
-        }
-        return instance;
-    }
     
+    /**
+     * Seta a lista de clientes
+     */
+    private void setaListaClientes() {
+        getInstanceView().setListaClientes(ControllerCliente.getInstance().listarClientes());
+    }
+
 }
