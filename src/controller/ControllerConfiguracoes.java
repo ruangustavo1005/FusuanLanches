@@ -59,12 +59,12 @@ public class ControllerConfiguracoes extends Controller {
     
     private boolean salvar() {
         if (configuracoes.getLista().size() > 0) {
-            this.configuracoes.remove(configuracoes.get(0));
+            return this.configuracoes.remove(configuracoes.get(0))
+                && this.configuracoes.add(this.getInstanceView().getModelFromTela());
         }
-        
-        this.configuracoes.add(this.getInstanceView().getModelFromTela());
-        
-        return true;
+        else {
+            return this.configuracoes.add(this.getInstanceView().getModelFromTela());
+        }
     }
     
 }

@@ -97,11 +97,12 @@ public class ControllerSolicitacaoAbastecimento extends Controller {
     
     private boolean salvar(SolicitacaoAbastecimento solicitacaoAbastecimento) {
         solicitacaoAbastecimento.setNumero(this.dao.getLista().size() + 1);
-        for (AbastecimentoItem abastecimentoItem : solicitacaoAbastecimento.getItens()) {
+
+        solicitacaoAbastecimento.getItens().forEach(abastecimentoItem -> {
             abastecimentoItem.setSolicitacaoAbastecimento(solicitacaoAbastecimento);
-        }
-        this.dao.add(solicitacaoAbastecimento);
-        return true;
+        });
+
+        return this.dao.add(solicitacaoAbastecimento);
     }
 
     @Override

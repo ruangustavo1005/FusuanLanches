@@ -65,8 +65,7 @@ public class ControllerItem extends Controller {
      * @return boolean
      */
     private boolean salvar() {
-        this.itens.add(this.getInstanceView().getModelFromTela());
-        return true;
+        return this.itens.add(this.getInstanceView().getModelFromTela());
     }
     
     public ArrayList<Item> listar() {

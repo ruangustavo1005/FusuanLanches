@@ -37,8 +37,7 @@ public class ControllerPessoa extends Controller  {
     }
     
     protected boolean salvar(Pessoa pessoa) {
-        pessoas.add(pessoa);
-        return true;
+        return pessoas.add(pessoa);
     }
     
 }

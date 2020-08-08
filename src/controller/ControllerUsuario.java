@@ -95,17 +95,19 @@ public class ControllerUsuario extends Controller {
      */
     private boolean salvar() {
         Usuario usuario = this.getInstanceView().getModelFromTela();
-        this.usuarios.add(usuario);
-        if(usuario.getPessoa() instanceof Cliente) {
-            ControllerCliente.getInstance().salvarCliente((Cliente)usuario.getPessoa());
-        }else if(usuario.getPessoa() instanceof Gerente) {
-            ControllerGerente.getInstance().salvarGerente((Gerente)usuario.getPessoa());
-        }else if(usuario.getPessoa() instanceof Fornecedor) {
-            ControllerFornecedor.getInstance().salvarFornecedor((Fornecedor)usuario.getPessoa());
-        }else if(usuario.getPessoa() instanceof Atendente) {
-            ControllerAtendente.getInstance().salvarAtendente((Atendente)usuario.getPessoa());
+        boolean retorno = this.usuarios.add(usuario);
+        if (retorno) {
+            if(usuario.getPessoa() instanceof Cliente) {
+                retorno = ControllerCliente.getInstance().salvarCliente((Cliente)usuario.getPessoa());
+            }else if(usuario.getPessoa() instanceof Gerente) {
+                retorno = ControllerGerente.getInstance().salvarGerente((Gerente)usuario.getPessoa());
+            }else if(usuario.getPessoa() instanceof Fornecedor) {
+                retorno = ControllerFornecedor.getInstance().salvarFornecedor((Fornecedor)usuario.getPessoa());
+            }else if(usuario.getPessoa() instanceof Atendente) {
+                retorno = ControllerAtendente.getInstance().salvarAtendente((Atendente)usuario.getPessoa());
+            }
         }
-        return true;
+        return retorno;
     }
     
     public ArrayList<Usuario> listar() {

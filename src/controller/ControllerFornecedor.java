@@ -34,8 +34,8 @@ public class ControllerFornecedor extends ControllerPessoa{
     }
     
     public boolean salvarFornecedor(Fornecedor fornecedor) {
-        fornecedores.add(fornecedor);
-        return super.salvar(fornecedor);
+        return fornecedores.add(fornecedor)
+            && super.salvar(fornecedor);
     }
     
 }

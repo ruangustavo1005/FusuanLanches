@@ -18,12 +18,12 @@ public class Dao<Type> {
         return lista;
     }
 
-    public void add(Type object) {
-        this.getLista().add(object);
+    public boolean add(Type object) {
+        return this.getLista().add(object);
     }
 
-    public void remove(Type object) {
-        this.getLista().remove(object);
+    public boolean remove(Type object) {
+        return this.getLista().remove(object);
     }
     
     public Type get(int i) {
