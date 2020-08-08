@@ -14,6 +14,7 @@ public class Comanda {
     private ArrayList<ComandaItem> itens;
     private String                 data;
     private int                    mesa;
+    private boolean                aberto;
 
     public Comanda() {
     
@@ -76,11 +77,17 @@ public class Comanda {
         this.mesa = mesa;
     }
 
+    public boolean getAberto() {
+        return aberto;
+    }
+
+    public void setAberto(boolean aberto) {
+        this.aberto = aberto;
+    }
+    
     @Override
     public String toString() {
         return numero + "";
     }
-    
-    
     
 }

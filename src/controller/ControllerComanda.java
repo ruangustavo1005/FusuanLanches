@@ -3,8 +3,11 @@ package controller;
 import dao.Dao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import model.Comanda;
 import model.ComandaItem;
+import model.Item;
+import model.SolicitacaoAbastecimento;
 import view.ViewCadastroComanda;
 
 /**
@@ -17,7 +20,9 @@ public class ControllerComanda extends Controller{
     
     private Comanda comanda;
     
-    private Dao<Comanda> daoComanda;
+    private Dao<Comanda> comandas;
+    
+    
     
     @Override
     protected ViewCadastroComanda getInstanceView() {
@@ -32,6 +37,7 @@ public class ControllerComanda extends Controller{
     }
 
     private ControllerComanda() {
+        comandas = new Dao<>();
         this.adicionaAcoesTela();
         this.setListasTela();
     }
@@ -42,6 +48,7 @@ public class ControllerComanda extends Controller{
     private void adicionaAcoesTela() {
         this.adicionaAcaoAddItem();
         this.adicionaAcaoRemoveItem();
+        this.adicionaAcaoCadastrar();
     }
     
     /**
@@ -60,11 +67,13 @@ public class ControllerComanda extends Controller{
                 else if(quantidade <= 0) {
                     getInstanceView().showMensagem("Informe uma quantidade válida!");
                 } else {
+                    Item item = ControllerItem.getInstance().getItens().getLista().get(indice);
                     ComandaItem comandaItem = new ComandaItem();
-                    comandaItem.setItem(ControllerItem.getInstance().getItens().getLista().get(indice));
+                    comandaItem.setItem(item);
                     comandaItem.setQuantidade(quantidade);
                     comandaItem.setComanda(new Comanda());
-//                    comandaItem.setValor(indice); TRATAR SAPORRA       TÁ BÃO
+                    /* Futuramente será tratado para validar as configurações de desconto gerais definidas */
+                    comandaItem.setValor(item.getValor()); 
 
                     getInstanceView().getTableModelComandaItem().getModelos().add(comandaItem);
                     getInstanceView().getTableModelComandaItem().fireTableRowsInserted(indice, indice);
@@ -89,6 +98,23 @@ public class ControllerComanda extends Controller{
                     getInstanceView().getTableModelComandaItem().remove(indice);
                 }
             }
+        });
+    }
+    
+    /**
+     * Adiciona a ação de cadastrar a comanda
+     */
+    private void adicionaAcaoCadastrar() {
+        this.getInstanceView().adicionaAcaoCadastrar(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(salvar(getInstanceView().getModelFromTela())){
+                    getInstanceView().showMensagem("Comanda incluída com sucesso!");
+                    getInstanceView().dispose();
+                } else {
+                    getInstanceView().showMensagem("Houve um erro ao cadastrar a comanda.");
+                }
+            } 
         });
     }
     
@@ -120,6 +146,32 @@ public class ControllerComanda extends Controller{
      */
     private void setaListaClientes() {
         getInstanceView().setListaClientes(ControllerCliente.getInstance().listarClientes());
+    }
+    
+    /**
+     * Retorna se foi possível salvar 
+     */
+    private boolean salvar(Comanda comanda) { 
+        comanda.setNumero(this.comandas.getLista().size() + 1);
+        comanda.setAberto(true);
+        comanda.getItens().forEach(comandaItem -> {
+            comandaItem.setComanda(comanda);
+        });
+        return this.comandas.add(comanda);
+    }
+    
+    public ArrayList<Comanda> listar() {
+        return this.comandas.getLista();
+    }
+    
+    public ArrayList<Comanda> listarAbertas() {
+        ArrayList<Comanda> abertas = new ArrayList<>();
+        for(Comanda comanda : this.comandas.getLista()){
+            if(comanda.getAberto()){
+                abertas.add(comanda);
+            }
+        }
+        return abertas;
     }
 
 }

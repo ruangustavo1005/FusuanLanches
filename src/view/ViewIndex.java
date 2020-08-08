@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import model.Comanda;
 
 /**
  * Tela principal do sistema
@@ -11,6 +13,7 @@ public class ViewIndex extends View {
     private static ViewIndex instance;
     
     private ViewIndex() {
+        this.tableModelComanda = new TableModelPadrao(new Comanda());
         initComponents();
     }
 
@@ -126,17 +129,7 @@ public class ViewIndex extends View {
 
         btnCadastroSolicitacaoAbastecimento.setText("Nova Solicitação de Abastecimento");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable1.setModel(tableModelComanda);
         jScrollPane1.setViewportView(jTable1);
 
         btnVisualizar.setText("Visualizar");
@@ -231,6 +224,8 @@ public class ViewIndex extends View {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    TableModelPadrao<Comanda> tableModelComanda;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCadastroSolicitacaoAbastecimento;
@@ -261,4 +256,12 @@ public class ViewIndex extends View {
     public void run() {
         getInstance().setVisible(true);
     }
+    
+    /**
+     * Seta os dados na consulta das comandas
+     */
+    public void setDadosTableModel(ArrayList<Comanda> comandas) {
+        this.tableModelComanda.setModelos(comandas);
+    }
+    
 }

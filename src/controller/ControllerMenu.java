@@ -25,6 +25,12 @@ public class ControllerMenu extends Controller {
         
         return instance;
     }
+
+    @Override
+    public void montaTela() {
+        this.getInstanceView().setDadosTableModel(ControllerComanda.getInstance().listarAbertas());
+        super.montaTela(); 
+    }
     
     /**
      * Adiciona as ações na tela

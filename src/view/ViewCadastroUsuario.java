@@ -88,6 +88,7 @@ public class ViewCadastroUsuario extends View {
         txtTelefone = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Usuários");
 
         jLabel1.setText("Nome completo:");
 
