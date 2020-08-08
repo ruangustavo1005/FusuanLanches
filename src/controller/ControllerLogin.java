@@ -79,11 +79,9 @@ public class ControllerLogin extends Controller {
     private boolean validaLogin(Usuario usuario) {
         boolean retorno = false;
         
-        ControllerUsuario.getInstance().listar().forEach((Usuario usuario1) -> {
-            if (usuario1.getLogin().equals(usuarioLogado.getLogin()) && usuario1.getSenha().equals(usuarioLogado.getSenha())) {
-                setUsuarioLogado(usuario1);
-            }
-        });
+        for (Usuario usuarioSalvo : ControllerUsuario.getInstance().listar()) {
+            retorno = retorno || (usuarioSalvo.getLogin().equals(usuario.getLogin()) && usuarioSalvo.getSenha().equals(usuario.getSenha()));
+        }
         
         if (usuario.getLogin().equals("123") && usuario.getSenha().equals(MD5.md5("123"))) {
             retorno = true;
