@@ -25,9 +25,9 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
             this.atributos.add(field.getName());
         }
         if (modelo instanceof ListagemParcial) {
-            for (String atributo : ((ListagemParcial) modelo).getCamposIgnorar()) {
+            ((ListagemParcial) modelo).getCamposIgnorar().forEach(atributo -> {
                 this.atributos.remove(atributo);
-            }
+            });
         }
     }
     

@@ -64,7 +64,7 @@ public class ControllerComanda extends Controller{
                     comandaItem.setItem(ControllerItem.getInstance().getItens().getLista().get(indice));
                     comandaItem.setQuantidade(quantidade);
                     comandaItem.setComanda(new Comanda());
-//                    comandaItem.setValor(indice); TRATAR SAPORRA
+//                    comandaItem.setValor(indice); TRATAR SAPORRA       TÁ BÃO
 
                     getInstanceView().getTableModelComandaItem().getModelos().add(comandaItem);
                     getInstanceView().getTableModelComandaItem().fireTableRowsInserted(indice, indice);

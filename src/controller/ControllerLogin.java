@@ -45,9 +45,8 @@ public class ControllerLogin extends Controller {
             public void actionPerformed(ActionEvent e) {
                 Usuario usuario = getInstanceView().getModelFromTela();
                 if (validaLogin(usuario)) {
-//                  Acho que seria mas persistir antes pra salvar os dados da pessoa, que são mais importantes.
-                    usuarioLogado = usuario;
-                    getInstanceView().setVisible(false);
+                    setUsuarioLogado(usuario);
+                    getInstanceView().dispose();
                     ControllerMenu.getInstance().montaTela();
                 }
                 else {
@@ -79,6 +78,10 @@ public class ControllerLogin extends Controller {
 
     private boolean validaLogin(Usuario usuario) {
         boolean retorno = false;
+        
+        for (Usuario usuarioSalvo : ControllerUsuario.getInstance().listar()) {
+            retorno = retorno || (usuarioSalvo.getLogin().equals(usuario.getLogin()) && usuarioSalvo.getSenha().equals(usuario.getSenha()));
+        }
         
         if (usuario.getLogin().equals("123") && usuario.getSenha().equals(MD5.md5("123"))) {
             retorno = true;

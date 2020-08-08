@@ -76,6 +76,13 @@ public class ViewIndex extends View {
     public void adicionaAcaoCadastroSolicitacaoAbastecimento(ActionListener actionListener){
         this.btnCadastroSolicitacaoAbastecimento.addActionListener(actionListener);
     }
+    
+    /**
+     * Adiciona a ação de consultar as solicitações de abastecimento
+     */
+    public void adicionaAcaoConsultaSolicitacoesAbastecimento(ActionListener actionListener){
+        this.imConsultaSolicitacoesAbastecimento.addActionListener(actionListener);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -101,6 +108,7 @@ public class ViewIndex extends View {
         imConsultaItem = new javax.swing.JMenuItem();
         imConsultaUsuario = new javax.swing.JMenuItem();
         imConsultarPessoas = new javax.swing.JMenuItem();
+        imConsultaSolicitacoesAbastecimento = new javax.swing.JMenuItem();
         mnOutros = new javax.swing.JMenu();
         imConfiguracoes = new javax.swing.JMenuItem();
 
@@ -159,6 +167,9 @@ public class ViewIndex extends View {
 
         imConsultarPessoas.setText("Pessoas");
         jMenu2.add(imConsultarPessoas);
+
+        imConsultaSolicitacoesAbastecimento.setText("Solicitações de abastecimento");
+        jMenu2.add(imConsultaSolicitacoesAbastecimento);
 
         jMenuBar1.add(jMenu2);
 
@@ -230,6 +241,7 @@ public class ViewIndex extends View {
     private javax.swing.JMenuItem imCadastroUsuario;
     private javax.swing.JMenuItem imConfiguracoes;
     private javax.swing.JMenuItem imConsultaItem;
+    private javax.swing.JMenuItem imConsultaSolicitacoesAbastecimento;
     private javax.swing.JMenuItem imConsultaUsuario;
     private javax.swing.JMenuItem imConsultarPessoas;
     private javax.swing.JButton jButton1;

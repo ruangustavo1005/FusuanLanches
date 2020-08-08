@@ -1,6 +1,5 @@
 package controller;
 
-import view.View;
 import view.ViewConsultaItem;
 
 /**

@@ -34,8 +34,8 @@ public class ControllerAtendente extends ControllerPessoa {
     }
     
     public boolean salvarAtendente(Atendente atendente) {
-        atendentes.add(atendente);
-        return super.salvar(atendente);
+        return atendentes.add(atendente)
+            && super.salvar(atendente);
     }
     
 }

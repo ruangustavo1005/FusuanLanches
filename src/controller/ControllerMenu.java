@@ -38,6 +38,7 @@ public class ControllerMenu extends Controller {
         this.adicionaAcaoConsultarUsuarios();
         this.adicionaAcaoConsultarPessoas();
         this.adicionaAcaoCadastroSolicitacaoAbastecimento();
+        this.adicionaAcaoConsultaSolicitacoesAbastecimento();
     }
     
     /**
@@ -132,6 +133,19 @@ public class ControllerMenu extends Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ControllerSolicitacaoAbastecimento.getInstance().montaTela();
+            }
+        });
+    }
+    
+
+    /**
+     * Adiciona a ação do botão de consultar solicitações de abastecimento
+     */
+    private void adicionaAcaoConsultaSolicitacoesAbastecimento() {
+        this.getInstanceView().adicionaAcaoConsultaSolicitacoesAbastecimento(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControllerConsultaSolicitacaoAbastecimento.getInstance().montaTela();
             }
         });
     }
