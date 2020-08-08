@@ -3,6 +3,7 @@ package controller;
 import dao.Dao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import model.AbastecimentoItem;
 import model.SolicitacaoAbastecimento;
 import view.ViewCadastroSolicitacaoAbastecimento;
@@ -14,10 +15,13 @@ import view.ViewCadastroSolicitacaoAbastecimento;
 public class ControllerSolicitacaoAbastecimento extends Controller {
 
     private static ControllerSolicitacaoAbastecimento instance;
+    
+    private SolicitacaoAbastecimento solicitacaoAbastecimento;
 
     private Dao<SolicitacaoAbastecimento> dao;
     
     private ControllerSolicitacaoAbastecimento() {
+        this.solicitacaoAbastecimento = new SolicitacaoAbastecimento();
         this.dao = new Dao<>();
         this.getInstanceView().setaDadosTabelaItens(ControllerItem.getInstance().listar());
         this.adicionaAcoesTela();
@@ -31,6 +35,14 @@ public class ControllerSolicitacaoAbastecimento extends Controller {
         return instance;
     }
 
+    public SolicitacaoAbastecimento getSolicitacaoAbastecimento() {
+        return solicitacaoAbastecimento;
+    }
+
+    public void setSolicitacaoAbastecimento(SolicitacaoAbastecimento solicitacaoAbastecimento) {
+        this.solicitacaoAbastecimento = solicitacaoAbastecimento;
+    }
+    
     private void adicionaAcoesTela() {
         this.adicionaAcaoAdicionarItem();
         this.adicionaAcaoFinalizar();
@@ -97,6 +109,7 @@ public class ControllerSolicitacaoAbastecimento extends Controller {
     
     private boolean salvar(SolicitacaoAbastecimento solicitacaoAbastecimento) {
         solicitacaoAbastecimento.setNumero(this.dao.getLista().size() + 1);
+        solicitacaoAbastecimento.setSituacao(SolicitacaoAbastecimento.getListaSituacoes().get(SolicitacaoAbastecimento.SITUACAO_ABERTA));
 
         solicitacaoAbastecimento.getItens().forEach(abastecimentoItem -> {
             abastecimentoItem.setSolicitacaoAbastecimento(solicitacaoAbastecimento);
@@ -105,6 +118,10 @@ public class ControllerSolicitacaoAbastecimento extends Controller {
         return this.dao.add(solicitacaoAbastecimento);
     }
 
+    public ArrayList<SolicitacaoAbastecimento> listar() {
+        return this.dao.getLista();
+    }
+    
     @Override
     public void montaTela() {
         super.montaTela();

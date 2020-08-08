@@ -68,7 +68,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return + codigo + " - " + nome;
+        return nome + " - (" + codigo + ")";
     }
     
 }

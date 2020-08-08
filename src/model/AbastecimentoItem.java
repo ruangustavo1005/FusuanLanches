@@ -49,7 +49,7 @@ public class AbastecimentoItem implements ListagemParcial {
 
     @Override
     public String toString() {
-        return "Abastecimento x Item: " + "Item: " + item + ", SolicitacaoAbastecimento: " + solicitacaoAbastecimento + ", Quantidade: " + quantidade;
+        return quantidade + " " + item;
     }
 
     @Override

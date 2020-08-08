@@ -7,8 +7,10 @@ import java.text.ParseException;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.MaskFormatter;
 
@@ -41,6 +43,9 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
             else if (c instanceof JRadioButton) {
                 ((JRadioButton) c).setSelected(false);
             }
+            else if (c instanceof JTable) {
+                ((JTable) c).setModel(new DefaultTableModel());
+            }
             else if (c instanceof Container) {
                 this.clearAll((Container) c);
             }
@@ -55,6 +60,9 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
             }
             else if (c instanceof JRadioButton) {
                 ((JRadioButton) c).setSelected(false);
+            }
+            else if (c instanceof JTable) {
+                ((JTable) c).setModel(new DefaultTableModel());
             }
             else if (c instanceof Container) {
                 this.clearAll((Container) c);
