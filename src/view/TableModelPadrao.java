@@ -13,9 +13,9 @@ import util.StringUtils;
  */
 public class TableModelPadrao<Type> extends AbstractTableModel {
     
-    private ArrayList<Type>   modelos;
-    private Type              modelo;
-    private ArrayList<String> atributos;
+    protected ArrayList<Type>   modelos;
+    protected Type              modelo;
+    protected ArrayList<String> atributos;
 
     public TableModelPadrao(Type modelo) {
         this.modelo  = modelo;
@@ -29,7 +29,7 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
         this.iniAtributos();
     }
     
-    private void iniAtributos() {
+    protected void iniAtributos() {
         this.atributos = new ArrayList<>();
         for (Field field : modelo.getClass().getDeclaredFields()) {
             this.atributos.add(field.getName());

@@ -34,8 +34,7 @@ public class ControllerCliente extends ControllerPessoa {
     }
     
     public boolean salvarCliente(Cliente cliente) {
-        return clientes.add(cliente)
-            && super.salvar(cliente);
+        return clientes.add(cliente);
     }
     
 }

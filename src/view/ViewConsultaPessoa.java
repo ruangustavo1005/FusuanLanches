@@ -12,7 +12,7 @@ public class ViewConsultaPessoa extends View {
     public static ViewConsultaPessoa instance;
 
     private ViewConsultaPessoa(ArrayList<Pessoa> lista) {
-        this.tableModelPessoa = new TableModelPadrao<>(lista);
+        this.tableModelPessoa = new TableModelPessoa(lista);
         initComponents();
     }
     
@@ -63,11 +63,11 @@ public class ViewConsultaPessoa extends View {
 
     public void setDadosTableModelPessoa(ArrayList<Pessoa> lista) {
         if (lista.size() > 0) {
-            this.tableModelPessoa = new TableModelPadrao<>(lista);
+            this.tableModelPessoa = new TableModelPessoa(lista);
         }
     }
     
-    private TableModelPadrao<Pessoa> tableModelPessoa;
+    private TableModelPessoa tableModelPessoa;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbPessoas;

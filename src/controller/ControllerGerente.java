@@ -34,8 +34,7 @@ public class ControllerGerente extends ControllerPessoa {
     }
     
     public boolean salvarGerente(Gerente gerente) {
-        return gerentes.add(gerente)
-            && super.salvar(gerente);
+        return gerentes.add(gerente);
     }
     
 }

@@ -14,8 +14,6 @@ public class ControllerPessoa extends Controller  {
     
     public static ControllerPessoa instance;
     
-    private Dao<Pessoa> pessoas;
-    
     public static ControllerPessoa getInstance() {
         if (instance == null) {
             instance = new ControllerPessoa();
@@ -24,7 +22,7 @@ public class ControllerPessoa extends Controller  {
     }
 
     protected ControllerPessoa() {
-        pessoas = new Dao<>();
+        
     }
     
     @Override
@@ -33,11 +31,12 @@ public class ControllerPessoa extends Controller  {
     }
     
     public ArrayList<Pessoa> listar() {
-        return this.pessoas.getLista();
-    }
-    
-    protected boolean salvar(Pessoa pessoa) {
-        return pessoas.add(pessoa);
+        ArrayList<Pessoa> pessoas = new ArrayList<>();
+        pessoas.addAll(ControllerCliente.getInstance().listarClientes());
+        pessoas.addAll(ControllerAtendente.getInstance().listarAtendentes());
+        pessoas.addAll(ControllerFornecedor.getInstance().listarFornecedores());
+        pessoas.addAll(ControllerGerente.getInstance().listarGerentes());
+        return pessoas;
     }
     
 }
