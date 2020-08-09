@@ -4,6 +4,7 @@ import exceptions.ExceptionMetodoNaoImplementado;
 import java.awt.Component;
 import java.awt.Container;
 import java.text.ParseException;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -41,6 +42,9 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
             else if (c instanceof JRadioButton) {
                 ((JRadioButton) c).setSelected(false);
             }
+            else if (c instanceof JComboBox) {
+                ((JComboBox) c).removeAllItems();
+            }
             else if (c instanceof Container) {
                 this.clearAll((Container) c);
             }
@@ -55,6 +59,9 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
             }
             else if (c instanceof JRadioButton) {
                 ((JRadioButton) c).setSelected(false);
+            }
+            else if (c instanceof JComboBox) {
+                ((JComboBox) c).removeAllItems();
             }
             else if (c instanceof Container) {
                 this.clearAll((Container) c);

@@ -4,6 +4,7 @@ import dao.Dao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.ComboBoxModel;
 import model.Atendente;
 import model.Cliente;
 import model.Fornecedor;
@@ -84,6 +85,21 @@ public class ControllerUsuario extends Controller {
         });
     }
 
+    @Override
+    public void montaTela() {
+        this.setDadosComboBoxTipoUsuario();
+        super.montaTela();
+    }
+
+    private void setDadosComboBoxTipoUsuario() {
+        ArrayList<String> lista = new ArrayList<>();
+        lista.add("Cliente");
+        lista.add("Fornecedor");
+        lista.add("Gerente");
+        lista.add("Atendente");
+        getInstanceView().setDadosComboBoxTipoUsuario(lista);
+    }
+    
     @Override
     protected ViewCadastroUsuario getInstanceView() {
         return ViewCadastroUsuario.getInstance();
