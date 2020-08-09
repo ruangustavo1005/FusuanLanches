@@ -4,7 +4,6 @@ import interfaces.ListagemParcial;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.table.AbstractTableModel;
 import util.StringUtils;
 
@@ -61,7 +60,7 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
         fireTableRowsDeleted(i, i);
     }
 
-    public void att(int i) {
+    public void update(int i) {
         fireTableRowsUpdated(i, i);
     }
 
@@ -103,7 +102,13 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
         String metodo = "get" + StringUtils.ucfirst(nome);
         try {
             retorno = model.getClass().getMethod(metodo).invoke(model);
-        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {}
+        } catch (NoSuchMethodException
+               | SecurityException
+               | IllegalAccessException
+               | IllegalArgumentException
+               | InvocationTargetException ex) {
+            
+        }
         return retorno;
     }
     

@@ -15,6 +15,7 @@ public abstract class Controller {
         try {
             this.getInstanceView().setVisible(true);
         } catch (ExceptionMetodoNaoImplementado ex) {
+            
         }
     }
     

@@ -79,6 +79,14 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
         throw new ExceptionMetodoNaoImplementado("getModelFromTela", this.getClass().getName());
     }
     
+    /**
+     * Atribui um modelo com os dados setados da tela.
+     * @throws ExceptionMetodoNaoImplementado dispara caso seja chamado por um controlador sem ter sido implementado
+     */
+    public void setModelTela() throws ExceptionMetodoNaoImplementado {
+        throw new ExceptionMetodoNaoImplementado("setModelTela", this.getClass().getName());
+    }
+    
     protected void formataCampo(JFormattedTextField campo, String formato) {
         this.formataCampo(campo, formato, ' ');
     }
@@ -91,16 +99,8 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
             mask.install(campo);
         }
         catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao formatar o campo");
+            this.showMensagem("Erro ao formatar o campo");
         }
-    }
-    
-    /**
-     * Retorna o modelo com os dados setados da tela.
-     * @throws ExceptionMetodoNaoImplementado dispara caso seja chamado por um controlador sem ter sido implementado
-     */
-    public void setModelTela() throws ExceptionMetodoNaoImplementado {
-        throw new ExceptionMetodoNaoImplementado("setModelTela", this.getClass().getName());
     }
 
     /**

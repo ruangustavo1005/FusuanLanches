@@ -23,7 +23,7 @@ public class ControllerPessoa extends Controller  {
         return instance;
     }
 
-    public ControllerPessoa() {
+    protected ControllerPessoa() {
         pessoas = new Dao<>();
     }
     
