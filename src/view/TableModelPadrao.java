@@ -4,6 +4,7 @@ import interfaces.ListagemParcial;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.table.AbstractTableModel;
 import util.StringUtils;
 

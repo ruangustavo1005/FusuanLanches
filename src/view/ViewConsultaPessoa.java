@@ -12,7 +12,7 @@ public class ViewConsultaPessoa extends View {
     public static ViewConsultaPessoa instance;
 
     private ViewConsultaPessoa(ArrayList<Pessoa> lista) {
-        this.tableModelPessoa.setModelos(lista);
+        this.tableModelPessoa = new TableModelPadrao<>(lista);
         initComponents();
     }
     
