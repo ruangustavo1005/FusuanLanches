@@ -1,5 +1,6 @@
 package controller;
 
+import exceptions.ExceptionMetodoNaoImplementado;
 import view.View;
 
 /**
@@ -8,10 +9,13 @@ import view.View;
  */
 public abstract class Controller {
     
-    protected abstract View getInstanceView();
+    protected abstract View getInstanceView() throws ExceptionMetodoNaoImplementado;
     
     public void montaTela(){
-        this.getInstanceView().setVisible(true);
+        try {
+            this.getInstanceView().setVisible(true);
+        } catch (ExceptionMetodoNaoImplementado ex) {
+        }
     }
     
 }
