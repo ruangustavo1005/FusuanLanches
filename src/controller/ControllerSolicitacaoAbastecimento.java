@@ -21,7 +21,6 @@ public class ControllerSolicitacaoAbastecimento extends Controller {
     private Dao<SolicitacaoAbastecimento> dao;
     
     private ControllerSolicitacaoAbastecimento() {
-        this.solicitacaoAbastecimento = new SolicitacaoAbastecimento();
         this.dao = new Dao<>();
         this.getInstanceView().setaDadosTabelaItens(ControllerItem.getInstance().listar());
         this.adicionaAcoesTela();
@@ -69,8 +68,7 @@ public class ControllerSolicitacaoAbastecimento extends Controller {
                     abastecimentoItem.setQuantidade(quantidade);
                     abastecimentoItem.setSolicitacaoAbastecimento(new SolicitacaoAbastecimento());
 
-                    getInstanceView().getTableModelSolicitacaoItens().getModelos().add(abastecimentoItem);
-                    getInstanceView().getTableModelSolicitacaoItens().fireTableRowsInserted(indice, indice);
+                    getInstanceView().getTableModelSolicitacaoItens().add(abastecimentoItem);
                 }
             }
         });
@@ -124,9 +122,22 @@ public class ControllerSolicitacaoAbastecimento extends Controller {
     
     @Override
     public void montaTela() {
-        super.montaTela();
         getInstanceView().setaDadosComboBoxGerente(ControllerGerente.getInstance().listarGerentes());
         getInstanceView().setaDadosComboBoxFornecedor(ControllerFornecedor.getInstance().listarFornecedores());
+        if (this.solicitacaoAbastecimento != null) {
+            getInstanceView().setSolicitacaoAbastecimento(this.solicitacaoAbastecimento);
+            getInstanceView().setModelTela();
+            getInstanceView().habilitaCampos(false);
+            this.setaSolicitacaoItensTela();
+            this.solicitacaoAbastecimento = null;
+        }
+        super.montaTela();
+    }
+    
+    private void setaSolicitacaoItensTela() {
+        this.solicitacaoAbastecimento.getItens().forEach(item -> {
+            getInstanceView().getTableModelSolicitacaoItens().add(item);
+        });
     }
     
     @Override
