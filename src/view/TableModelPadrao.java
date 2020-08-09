@@ -39,6 +39,12 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
         this.modelos = modelos;
     }
 
+    public void add(Type model) {
+        modelos.add(model);
+        int i = modelos.indexOf(model);
+        fireTableRowsDeleted(i, i);
+    }
+
     public void remove(int i) {
         modelos.remove(i);
         fireTableRowsDeleted(i, i);

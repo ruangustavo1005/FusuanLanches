@@ -25,7 +25,10 @@ public class SolicitacaoAbastecimento implements ListagemParcial {
     private Lista                        situacao;
     
     public SolicitacaoAbastecimento() {
-        this.situacao = new Lista();
+        this.gerente    = new Gerente();
+        this.fornecedor = new Fornecedor();
+        this.itens      = new ArrayList<>();
+        this.situacao   = new Lista();
     }
 
     public int getNumero() {
@@ -121,7 +124,7 @@ public class SolicitacaoAbastecimento implements ListagemParcial {
         campos.add("SITUACAO_ATENDIDA");
         campos.add("SITUACAO_VENCIDA");
         campos.add("SITUACAO_CANCELADA");
-        campos.add("itens");
+//        campos.add("itens");
         return campos;
     }
     

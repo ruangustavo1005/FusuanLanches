@@ -6,6 +6,10 @@ package model;
  */
 public class Gerente extends Pessoa{
 
+    public Gerente() {
+    }
+    
+
     public Gerente(String cpfCnpj, String nome, String email) {
         super(cpfCnpj, nome, email);
     }

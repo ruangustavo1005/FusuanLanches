@@ -23,7 +23,6 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
     private ViewCadastroSolicitacaoAbastecimento() {
         this.tableModelItens            = new TableModelPadrao(new Item());
         this.tableModelSolicitacaoItens = new TableModelPadrao(new AbastecimentoItem());
-        this.solicitacaoAbastecimento   = new SolicitacaoAbastecimento();
         initComponents();
         this.formataCampos();
     }
@@ -37,6 +36,7 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
     
     @Override
     public SolicitacaoAbastecimento getModelFromTela() {
+        this.solicitacaoAbastecimento = new SolicitacaoAbastecimento();
         this.solicitacaoAbastecimento.setData(this.txtData.getText());
         this.solicitacaoAbastecimento.setDataLimite(this.txtDataLimite.getText());
         this.solicitacaoAbastecimento.setFornecedor((Fornecedor) this.cbFornecedor.getSelectedItem());
@@ -47,6 +47,10 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
 
     public void setaDadosTabelaItens(ArrayList<Item> itens) {
         this.tableModelItens.setModelos(itens);
+    }
+
+    public void setaDadosTabelaSolicitacaoItens(ArrayList<AbastecimentoItem> solicitacaoItens) {
+        this.tableModelSolicitacaoItens.setModelos(solicitacaoItens);
     }
 
     public void setaDadosComboBoxGerente(ArrayList<Gerente> gerentes) {
@@ -60,6 +64,14 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
             this.cbFornecedor.addItem(fornecedor);
         });
     }
+
+    public SolicitacaoAbastecimento getSolicitacaoAbastecimento() {
+        return solicitacaoAbastecimento;
+    }
+
+    public void setSolicitacaoAbastecimento(SolicitacaoAbastecimento solicitacaoAbastecimento) {
+        this.solicitacaoAbastecimento = solicitacaoAbastecimento;
+    }
     
     private void formataCampos() {
         this.formataCampo(txtQuantidade, CAMPO_CODIGO, '0');
@@ -67,6 +79,32 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
         this.formataCampo(txtDataLimite, CAMPO_DATA,   '0');
     }
 
+    @Override
+    public void setModelTela() {
+        this.cbFornecedor.setSelectedItem(this.solicitacaoAbastecimento.getFornecedor());
+        this.cbGerente.setSelectedItem(this.solicitacaoAbastecimento.getGerente());
+        this.txtData.setText(this.solicitacaoAbastecimento.getData());
+        this.txtDataLimite.setText(this.solicitacaoAbastecimento.getDataLimite());
+    }
+    
+    public void habilitaCampos(boolean habilita) {
+        this.cbFornecedor.setEnabled(habilita);
+        this.cbGerente.setEnabled(habilita);
+        this.txtData.setEnabled(habilita);
+        this.txtDataLimite.setEnabled(habilita);
+        this.txtQuantidade.setEnabled(habilita);
+        this.btnAdicionarItem.setEnabled(habilita);
+        this.btnRemover.setEnabled(habilita);
+        this.btnFinalizar.setEnabled(habilita);
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        this.solicitacaoAbastecimento = null;
+        this.habilitaCampos(true);
+    }
+    
     @Override
     protected void clearAll() {
         super.clearAll();
