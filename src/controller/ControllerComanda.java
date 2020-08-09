@@ -37,7 +37,6 @@ public class ControllerComanda extends Controller{
     private ControllerComanda() {
         comandas = new Dao<>();
         this.adicionaAcoesTela();
-        this.setListasTela();
     }
     
     /**
@@ -114,6 +113,12 @@ public class ControllerComanda extends Controller{
                 }
             } 
         });
+    }
+
+    @Override
+    public void montaTela() {
+        super.montaTela();
+        this.setListasTela();
     }
     
     /**
