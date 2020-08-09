@@ -109,6 +109,7 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
     protected void clearAll() {
         super.clearAll();
         this.tableModelSolicitacaoItens = new TableModelPadrao(new AbastecimentoItem());
+        this.tbSolicitacaoItens.setModel(this.tableModelSolicitacaoItens);
     }
     
     @SuppressWarnings("unchecked")
