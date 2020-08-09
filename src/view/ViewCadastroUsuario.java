@@ -2,14 +2,12 @@ package view;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.ComboBoxModel;
 import model.Atendente;
 import model.Cliente;
 import model.Fornecedor;
 import model.Gerente;
 import model.Pessoa;
 import model.Usuario;
-import util.Lista;
 import util.MD5;
 
 /**
@@ -48,7 +46,7 @@ public class ViewCadastroUsuario extends View {
 
     @Override
     public Usuario getModelFromTela() {
-        String senha   = MD5.md5(new String(txtSenha.getPassword()));
+        String senha = MD5.md5(new String(txtSenha.getPassword()));
         return new Usuario(this.getInstancePessoaFromTipo(), txtLogin.getText(), senha);
     }
     

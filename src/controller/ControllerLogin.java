@@ -44,10 +44,29 @@ public class ControllerLogin extends Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Usuario usuario = getInstanceView().getModelFromTela();
-                if (validaLogin(usuario)) {
+                        usuario = validaLogin(usuario);
+                
+                if (usuario != null) {
                     setUsuarioLogado(usuario);
+                    
+                    if (usuario.isGerente()) {
+                        ControllerMenu.getInstance().montaTela();
+                    }
+                    else if (usuario.isFornecedor()) {
+                        ControllerConsultaSolicitacaoAbastecimento.getInstance().montaTela();
+                    }
+                    else if (usuario.isAtendente()) {
+                        ControllerMenu.getInstance().montaTela();
+                    }
+                    else if (usuario.isCliente()) {
+                        getInstanceView().showMensagem("Seu usuário não pode utilizar o sistema ainda! Aguarde por novas atualizações!");
+                    }
+//                    Precisa tirar esse else, tô deixando aqui pra funcionar o login 123/123
+                    else {
+                        ControllerMenu.getInstance().montaTela();
+                    }
+                    
                     getInstanceView().dispose();
-                    ControllerMenu.getInstance().montaTela();
                 }
                 else {
                     getInstanceView().showMensagemDadosIncorretos();
@@ -76,18 +95,18 @@ public class ControllerLogin extends Controller {
         ControllerLogin.usuarioLogado = usuarioLogado;
     }
 
-    private boolean validaLogin(Usuario usuario) {
-        boolean retorno = false;
+    private Usuario validaLogin(Usuario usuario) {
+        Usuario retorno = null;
         
         for (Usuario usuarioSalvo : ControllerUsuario.getInstance().listar()) {
             if (usuarioSalvo.getLogin().equals(usuario.getLogin()) && usuarioSalvo.getSenha().equals(usuario.getSenha())) {
-                retorno = true;
+                retorno = usuarioSalvo;
                 break;
             }
         }
         
         if (usuario.getLogin().equals("123") && usuario.getSenha().equals(MD5.md5("123"))) {
-            retorno = true;
+            retorno = usuario;
         }
         
         return retorno;

@@ -4,7 +4,6 @@ import dao.Dao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.ComboBoxModel;
 import model.Atendente;
 import model.Cliente;
 import model.Fornecedor;
@@ -110,19 +109,27 @@ public class ControllerUsuario extends Controller {
      * @return boolean
      */
     private boolean salvar() {
+        boolean retorno = false;
+        
         Usuario usuario = this.getInstanceView().getModelFromTela();
-        boolean retorno = this.usuarios.add(usuario);
-        if (retorno) {
-            if(usuario.getPessoa() instanceof Cliente) {
-                retorno = ControllerCliente.getInstance().salvarCliente((Cliente)usuario.getPessoa());
-            }else if(usuario.getPessoa() instanceof Gerente) {
-                retorno = ControllerGerente.getInstance().salvarGerente((Gerente)usuario.getPessoa());
-            }else if(usuario.getPessoa() instanceof Fornecedor) {
-                retorno = ControllerFornecedor.getInstance().salvarFornecedor((Fornecedor)usuario.getPessoa());
-            }else if(usuario.getPessoa() instanceof Atendente) {
-                retorno = ControllerAtendente.getInstance().salvarAtendente((Atendente)usuario.getPessoa());
-            }
+        
+        if (usuario.isCliente()) {
+            retorno = ControllerCliente.getInstance().salvarCliente((Cliente) usuario.getPessoa());
         }
+        else if (usuario.isGerente()) {
+            retorno = ControllerGerente.getInstance().salvarGerente((Gerente) usuario.getPessoa());
+        }
+        else if (usuario.isFornecedor()) {
+            retorno = ControllerFornecedor.getInstance().salvarFornecedor((Fornecedor) usuario.getPessoa());
+        }
+        else if (usuario.isAtendente()) {
+            retorno = ControllerAtendente.getInstance().salvarAtendente((Atendente) usuario.getPessoa());
+        }
+        
+        if (retorno) {
+            retorno = this.usuarios.add(usuario);
+        }
+        
         return retorno;
     }
     

@@ -48,6 +48,22 @@ public class Usuario implements ListagemParcial {
         this.senha = MD5.md5(senha);
     }
 
+    public boolean isCliente() {
+        return this.pessoa instanceof Cliente;
+    }
+
+    public boolean isGerente() {
+        return this.pessoa instanceof Gerente;
+    }
+
+    public boolean isFornecedor() {
+        return this.pessoa instanceof Fornecedor;
+    }
+
+    public boolean isAtendente() {
+        return this.pessoa instanceof Atendente;
+    }
+    
     @Override
     public String toString() {
         return "Usuario: Login: " + login;

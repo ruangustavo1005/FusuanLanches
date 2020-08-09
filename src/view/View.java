@@ -23,6 +23,8 @@ public abstract class View extends javax.swing.JFrame implements Runnable {
     public static final String CAMPO_VALOR    = "###,##";
     public static final String CAMPO_DATA     = "##/##/####";
     public static final String CAMPO_TELEFONE = "(##)#####-####";
+    public static final String CAMPO_CPF      = "###.###.###-##";
+    public static final String CAMPO_CNPJ     = "##.###.###/####-##";
     
     protected View() {
         initComponents();
