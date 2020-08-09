@@ -42,7 +42,7 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
     public void add(Type model) {
         modelos.add(model);
         int i = modelos.indexOf(model);
-        fireTableRowsDeleted(i, i);
+        fireTableRowsInserted(i, i);
     }
 
     public void remove(int i) {
