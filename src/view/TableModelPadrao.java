@@ -18,10 +18,20 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
     private ArrayList<String> atributos;
 
     public TableModelPadrao(Type modelo) {
-        this.modelo    = modelo;
-        this.modelos   = new ArrayList<>();
+        this.modelo  = modelo;
+        this.modelos = new ArrayList<>();
+        this.iniAtributos();
+    }
+
+    public TableModelPadrao(ArrayList<Type> modelos) {
+        this.modelos = modelos;
+        this.modelo  = modelos.get(0);
+        this.iniAtributos();
+    }
+    
+    private void iniAtributos() {
         this.atributos = new ArrayList<>();
-        for (Field field :  modelo.getClass().getDeclaredFields()) {
+        for (Field field : modelo.getClass().getDeclaredFields()) {
             this.atributos.add(field.getName());
         }
         if (modelo instanceof ListagemParcial) {

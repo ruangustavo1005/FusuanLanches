@@ -10,7 +10,7 @@ public class ControllerConsultaPessoa extends Controller {
 
     private static ControllerConsultaPessoa instance;
 
-    public ControllerConsultaPessoa() {
+    private ControllerConsultaPessoa() {
         
     }
     
@@ -24,11 +24,12 @@ public class ControllerConsultaPessoa extends Controller {
     @Override
     public void montaTela() {
         super.montaTela();
+        this.getInstanceView().setDadosTableModelPessoa(ControllerPessoa.getInstance().listar());
     }
     
     @Override
     protected ViewConsultaPessoa getInstanceView() {
-        return ViewConsultaPessoa.getInstance();
+        return ViewConsultaPessoa.getInstance(ControllerPessoa.getInstance().listar());
     }
 
 }
