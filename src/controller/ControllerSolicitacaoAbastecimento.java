@@ -105,15 +105,15 @@ public class ControllerSolicitacaoAbastecimento extends Controller {
         });
     }
     
-    private boolean salvar(SolicitacaoAbastecimento solicitacaoAbastecimento) {
-        solicitacaoAbastecimento.setNumero(this.dao.getLista().size() + 1);
-        solicitacaoAbastecimento.setSituacao(SolicitacaoAbastecimento.getListaSituacoes().get(SolicitacaoAbastecimento.SITUACAO_ABERTA));
+    private boolean salvar(SolicitacaoAbastecimento solicitacaoAbastecimentoNova) {
+        solicitacaoAbastecimentoNova.setNumero(this.dao.getLista().size() + 1);
+        solicitacaoAbastecimentoNova.setSituacao(SolicitacaoAbastecimento.getListaSituacoes().get(SolicitacaoAbastecimento.SITUACAO_ABERTA));
 
-        solicitacaoAbastecimento.getItens().forEach(abastecimentoItem -> {
-            abastecimentoItem.setSolicitacaoAbastecimento(solicitacaoAbastecimento);
-        });
+        for (AbastecimentoItem abastecimentoItem : solicitacaoAbastecimentoNova.getItens()) {
+            abastecimentoItem.setSolicitacaoAbastecimento(solicitacaoAbastecimentoNova);
+        }
 
-        return this.dao.add(solicitacaoAbastecimento);
+        return this.dao.add(solicitacaoAbastecimentoNova);
     }
 
     public ArrayList<SolicitacaoAbastecimento> listar() {
