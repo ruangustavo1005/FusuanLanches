@@ -1,12 +1,15 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.ComboBoxModel;
 import model.Atendente;
 import model.Cliente;
 import model.Fornecedor;
 import model.Gerente;
 import model.Pessoa;
 import model.Usuario;
+import util.Lista;
 import util.MD5;
 
 /**
@@ -35,6 +38,12 @@ public class ViewCadastroUsuario extends View {
             instance = new ViewCadastroUsuario();
         }
         return instance;
+    }
+    
+    public void setDadosComboBoxTipoUsuario(ArrayList<String> lista) {
+        lista.forEach(item -> {
+            this.cbTipoUsuario.addItem(item);
+        });
     }
 
     @Override
@@ -98,7 +107,6 @@ public class ViewCadastroUsuario extends View {
 
         jLabel5.setText("Tipo do Usuário:");
 
-        cbTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Fornecedor", "Gerente", "Atendente" }));
         cbTipoUsuario.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbTipoUsuarioItemStateChanged(evt);
