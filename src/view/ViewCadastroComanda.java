@@ -60,14 +60,22 @@ public class ViewCadastroComanda extends View {
      * Define se habilita ou desabilita os campos
      */
     public void habilitaCampos(boolean habilita) {
-        this.txtData.setEnabled(habilita);
-        this.txtMesa.setEnabled(habilita);
-        this.txtQuantidade.setEnabled(habilita);
-        this.listAtendente.setEnabled(habilita);
-        this.listCliente.setEnabled(habilita);
+        this.txtData.setEditable(habilita);
+        this.txtMesa.setEditable(habilita);
+        this.txtQuantidade.setEditable(habilita);
+        this.listAtendente.setEditable(habilita);
+        this.listCliente.setEditable(habilita);
+        this.listItens.setEditable(habilita);
         this.btnAddItem.setEnabled(habilita);
         this.btnCadastrar.setEnabled(habilita);
         this.btnRemover.setEnabled(habilita);
+    }
+
+    @Override
+    protected void clearAll() {
+        super.clearAll(); 
+        this.tableModelComandaItem = new TableModelPadrao(new ComandaItem());
+        this.tbComandaItem.setModel(this.tableModelComandaItem);
     }
 
     public void setComanda(Comanda comanda) {
@@ -146,7 +154,7 @@ public class ViewCadastroComanda extends View {
         btnCadastrar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbComandaItem = new javax.swing.JTable();
         listItens = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         txtQuantidade = new javax.swing.JFormattedTextField();
@@ -187,8 +195,8 @@ public class ViewCadastroComanda extends View {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable2.setModel(tableModelComandaItem);
-        jScrollPane2.setViewportView(jTable2);
+        tbComandaItem.setModel(tableModelComandaItem);
+        jScrollPane2.setViewportView(tbComandaItem);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -339,10 +347,10 @@ public class ViewCadastroComanda extends View {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JComboBox<Atendente> listAtendente;
     private javax.swing.JComboBox<Cliente> listCliente;
     private javax.swing.JComboBox<Item> listItens;
+    private javax.swing.JTable tbComandaItem;
     private javax.swing.JFormattedTextField txtData;
     private javax.swing.JFormattedTextField txtMesa;
     private javax.swing.JFormattedTextField txtQuantidade;
