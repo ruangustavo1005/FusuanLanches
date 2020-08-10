@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import model.Comanda;
 import model.ComandaItem;
 import model.Item;
-import model.SolicitacaoAbastecimento;
 import view.ViewCadastroComanda;
 
 /**
@@ -69,8 +68,7 @@ public class ControllerComanda extends Controller{
                     comandaItem.setItem(item);
                     comandaItem.setQuantidade(quantidade);
                     comandaItem.setComanda(new Comanda());
-                    /* Futuramente será tratado para validar as configurações de desconto gerais definidas */
-                    comandaItem.setValor(item.getValor()); 
+//                    comandaItem.setValor(item.getValor()); 
 
                     getInstanceView().getTableModelComandaItem().getModelos().add(comandaItem);
                     getInstanceView().getTableModelComandaItem().fireTableRowsInserted(indice, indice);
