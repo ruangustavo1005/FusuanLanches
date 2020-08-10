@@ -105,8 +105,10 @@ public class ControllerComanda extends Controller{
         this.getInstanceView().adicionaAcaoCadastrar(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if(salvar(getInstanceView().getModelFromTela())){
+                Comanda comanda = getInstanceView().getModelFromTela();
+                if(salvar(comanda)){
                     getInstanceView().showMensagem("Comanda incluída com sucesso!");
+                    ControllerMenu.getInstance().atualizarConsultaComanda(comanda);
                     getInstanceView().dispose();
                 } else {
                     getInstanceView().showMensagem("Houve um erro ao cadastrar a comanda.");

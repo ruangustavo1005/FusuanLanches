@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.Comanda;
 import view.ViewIndex;
 
 /**
@@ -30,6 +31,10 @@ public class ControllerMenu extends Controller {
         super.montaTela(); 
     }
     
+    public void atualizarConsultaComanda(Comanda comanda) {
+        getInstanceView().getTableModelComanda().add(comanda);
+    }
+    
     /**
      * Adiciona as ações na tela
      */
@@ -43,6 +48,9 @@ public class ControllerMenu extends Controller {
         this.adicionaAcaoConsultarPessoas();
         this.adicionaAcaoCadastroSolicitacaoAbastecimento();
         this.adicionaAcaoConsultaSolicitacoesAbastecimento();
+        this.adicionaAcaoVisualizarComanda();
+        this.adicionaAcaoRemoverComanda();
+        this.adicionaAcaoFecharComanda();
         this.adicionaAcaoLogout();
     }
     
@@ -150,6 +158,42 @@ public class ControllerMenu extends Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ControllerConsultaSolicitacaoAbastecimento.getInstance().montaTela();
+            }
+        });
+    }
+    
+    private void adicionaAcaoVisualizarComanda() {
+        getInstanceView().adicionaAcaoVisualizarComanda(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                ViewConsultaSolicitacaoAbastecimento view = getInstanceView();
+//                    
+//                int indiceSelecionado = view.getTbSolocitacaoAbastecimento().getSelectedRow();
+//                    
+//                ControllerSolicitacaoAbastecimento controllerSolicitacaoAbastecimento = ControllerSolicitacaoAbastecimento.getInstance();
+//                    
+//                SolicitacaoAbastecimento solicitacaoAbastecimento = view.getTableModel().getModelos().get(indiceSelecionado);
+//                    
+//                controllerSolicitacaoAbastecimento.setSolicitacaoAbastecimento(solicitacaoAbastecimento);
+//                controllerSolicitacaoAbastecimento.montaTela();
+            }
+        });
+    }
+            
+    private void adicionaAcaoRemoverComanda() {
+        getInstanceView().adicionaAcaoRemoverComanda(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+    }
+            
+    private void adicionaAcaoFecharComanda() {
+        getInstanceView().adicionaAcaoFecharComanda(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
             }
         });
     }

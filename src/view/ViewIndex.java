@@ -88,6 +88,27 @@ public class ViewIndex extends View {
     }
     
     /**
+     * Adiciona a ação de visualizar comanda
+     */
+    public void adicionaAcaoVisualizarComanda(ActionListener actionListener){
+        this.btnVisualizar.addActionListener(actionListener);
+    }
+    
+    /**
+     * Adiciona a ação de remover comanda
+     */
+    public void adicionaAcaoRemoverComanda(ActionListener actionListener){
+        this.btnRemover.addActionListener(actionListener);
+    }
+    
+    /**
+     * Adiciona a ação de fechar comanda
+     */
+    public void adicionaAcaoFecharComanda(ActionListener actionListener){
+        this.btnFechar.addActionListener(actionListener);
+    }
+    
+    /**
      * Adiciona a ação de logout
      */
     public void adicionaAcaoLogout(ActionListener actionListener){
@@ -109,6 +130,7 @@ public class ViewIndex extends View {
         btnVisualizar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        btnFechar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastros = new javax.swing.JMenu();
         imCadastroUsuario = new javax.swing.JMenuItem();
@@ -144,6 +166,8 @@ public class ViewIndex extends View {
         btnRemover.setText("Remover");
 
         jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        btnFechar.setText("Fechar");
 
         menuCadastros.setText("Cadastros");
 
@@ -201,6 +225,8 @@ public class ViewIndex extends View {
                         .addContainerGap()
                         .addComponent(btnNovaComanda)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnFechar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVisualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRemover)))
@@ -217,7 +243,8 @@ public class ViewIndex extends View {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovaComanda)
                     .addComponent(btnRemover)
-                    .addComponent(btnVisualizar))
+                    .addComponent(btnVisualizar)
+                    .addComponent(btnFechar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                 .addContainerGap())
@@ -228,9 +255,10 @@ public class ViewIndex extends View {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    TableModelPadrao<Comanda> tableModelComanda;
+    private TableModelPadrao<Comanda> tableModelComanda;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastroSolicitacaoAbastecimento;
+    private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnNovaComanda;
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnVisualizar;
@@ -258,6 +286,10 @@ public class ViewIndex extends View {
     @Override
     public void run() {
         getInstance().setVisible(true);
+    }
+
+    public TableModelPadrao<Comanda> getTableModelComanda() {
+        return tableModelComanda;
     }
     
     /**

@@ -128,6 +128,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnNovaComanda" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnFechar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnVisualizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnRemover" min="-2" max="-2" attributes="0"/>
@@ -149,6 +151,7 @@
                   <Component id="btnNovaComanda" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnRemover" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnVisualizar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnFechar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="241" max="32767" attributes="0"/>
@@ -201,6 +204,11 @@
             <LineBorder/>
           </Border>
         </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnFechar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fechar"/>
       </Properties>
     </Component>
   </SubComponents>
