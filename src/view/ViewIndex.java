@@ -2,6 +2,7 @@ package view;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JTable;
 import model.Comanda;
 
 /**
@@ -126,7 +127,7 @@ public class ViewIndex extends View {
         btnNovaComanda = new javax.swing.JButton();
         btnCadastroSolicitacaoAbastecimento = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbComanda = new javax.swing.JTable();
         btnVisualizar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -158,8 +159,8 @@ public class ViewIndex extends View {
 
         btnCadastroSolicitacaoAbastecimento.setText("Nova Solicitação de Abastecimento");
 
-        jTable1.setModel(tableModelComanda);
-        jScrollPane1.setViewportView(jTable1);
+        tbComanda.setModel(tableModelComanda);
+        jScrollPane1.setViewportView(tbComanda);
 
         btnVisualizar.setText("Visualizar");
 
@@ -278,9 +279,9 @@ public class ViewIndex extends View {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JMenu menuCadastros;
     private javax.swing.JMenu mnOutros;
+    private javax.swing.JTable tbComanda;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -290,6 +291,10 @@ public class ViewIndex extends View {
 
     public TableModelPadrao<Comanda> getTableModelComanda() {
         return tableModelComanda;
+    }
+    
+    public JTable getTbComanda() {
+        return tbComanda;
     }
     
     /**

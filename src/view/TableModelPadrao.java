@@ -102,6 +102,9 @@ public class TableModelPadrao<Type> extends AbstractTableModel {
         String metodo = "get" + StringUtils.ucfirst(nome);
         try {
             retorno = model.getClass().getMethod(metodo).invoke(model);
+//            if(retorno instanceof Boolean){
+//                retorno = (Boolean) retorno ? "Sim" : "Não";
+//            }
         } catch (NoSuchMethodException
                | SecurityException
                | IllegalAccessException

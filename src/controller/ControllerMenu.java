@@ -184,7 +184,14 @@ public class ControllerMenu extends Controller {
         getInstanceView().adicionaAcaoRemoverComanda(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int indice = getInstanceView().getTbComanda().getSelectedRow();
                 
+                if (indice < 0) {
+                    getInstanceView().showMensagem("Selecione um item da comanda!");
+                }
+                else {
+                    getInstanceView().getTbComanda().remove(indice);
+                }
             }
         });
     }
