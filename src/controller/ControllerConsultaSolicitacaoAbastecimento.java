@@ -2,7 +2,11 @@ package controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import model.SolicitacaoAbastecimento;
+import util.DateUtils;
 import view.ViewConsultaSolicitacaoAbastecimento;
 
 /**
@@ -48,7 +52,24 @@ public class ControllerConsultaSolicitacaoAbastecimento extends Controller {
     }
     
     private void setDadosTableModel() {
-        getInstanceView().setDadosTableModel(ControllerSolicitacaoAbastecimento.getInstance().listar());
+        ArrayList<SolicitacaoAbastecimento> solicitacoes = ControllerSolicitacaoAbastecimento.getInstance().listar();
+        
+      
+//      Ondernando pela data limite
+        Collections.sort(solicitacoes, new Comparator<SolicitacaoAbastecimento>() {
+            @Override
+            public int compare(SolicitacaoAbastecimento s1, SolicitacaoAbastecimento s2) {
+                if (DateUtils.dataToInt(s1.getDataLimite()) > DateUtils.dataToInt(s2.getDataLimite())) {
+                    return 1;
+                }
+                else if (DateUtils.dataToInt(s1.getDataLimite()) < DateUtils.dataToInt(s2.getDataLimite())) {
+                    return -1;
+                }
+                return 0;
+            }
+        });
+        
+        getInstanceView().setDadosTableModel(solicitacoes);
     }
     
     @Override
