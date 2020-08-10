@@ -37,6 +37,10 @@ public class ControllerComanda extends Controller{
         comandas = new Dao<>();
         this.adicionaAcoesTela();
     }
+
+    public void setComanda(Comanda comanda) {
+        this.comanda = comanda;
+    }
     
     /**
      * Adiciona as ações na tela
@@ -117,8 +121,14 @@ public class ControllerComanda extends Controller{
 
     @Override
     public void montaTela() {
-        super.montaTela();
         this.setListasTela();
+        if(this.comanda != null) {
+            getInstanceView().setComanda(this.comanda); 
+            getInstanceView().setModelTela();
+            getInstanceView().habilitaCampos(false);
+            this.comanda = null;
+        }
+        super.montaTela();
     }
     
     /**

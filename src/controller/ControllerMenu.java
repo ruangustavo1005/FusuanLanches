@@ -167,20 +167,23 @@ public class ControllerMenu extends Controller {
         getInstanceView().adicionaAcaoVisualizarComanda(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                ViewConsultaSolicitacaoAbastecimento view = getInstanceView();
-//                    
-//                int indiceSelecionado = view.getTbSolocitacaoAbastecimento().getSelectedRow();
-//                    
-//                ControllerSolicitacaoAbastecimento controllerSolicitacaoAbastecimento = ControllerSolicitacaoAbastecimento.getInstance();
-//                    
-//                SolicitacaoAbastecimento solicitacaoAbastecimento = view.getTableModel().getModelos().get(indiceSelecionado);
-//                    
-//                controllerSolicitacaoAbastecimento.setSolicitacaoAbastecimento(solicitacaoAbastecimento);
-//                controllerSolicitacaoAbastecimento.montaTela();
+                ViewIndex view = getInstanceView();
+                    
+                int indiceSelecionado = view.getTbComanda().getSelectedRow();
+                    
+                ControllerComanda controllerComanda = ControllerComanda.getInstance();
+                    
+                Comanda comanda = view.getTableModelComanda().getModelos().get(indiceSelecionado);
+                    
+                controllerComanda.setComanda(comanda);
+                controllerComanda.montaTela();
             }
         });
     }
-            
+
+    /**
+     * Adiciona a ação de remover a comanda
+     */
     private void adicionaAcaoRemoverComanda() {
         getInstanceView().adicionaAcaoRemoverComanda(new ActionListener() {
             @Override
@@ -188,10 +191,10 @@ public class ControllerMenu extends Controller {
                 int indice = getInstanceView().getTbComanda().getSelectedRow();
                 
                 if (indice < 0) {
-                    getInstanceView().showMensagem("Selecione um item da comanda!");
+                    getInstanceView().showMensagem("Selecione uma comanda!");
                 }
                 else {
-                    getInstanceView().getTbComanda().remove(indice);
+                    getInstanceView().getTableModelComanda().remove(indice);
                 }
             }
         });
