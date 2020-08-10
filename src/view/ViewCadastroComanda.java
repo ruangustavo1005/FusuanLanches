@@ -60,15 +60,22 @@ public class ViewCadastroComanda extends View {
      * Define se habilita ou desabilita os campos
      */
     public void habilitaCampos(boolean habilita) {
-        this.txtData.setEnabled(habilita);
-        this.txtMesa.setEnabled(habilita);
-        this.txtQuantidade.setEnabled(habilita);
-        this.listAtendente.setEnabled(habilita);
-        this.listCliente.setEnabled(habilita);
+        this.txtData.setEditable(habilita);
+        this.txtMesa.setEditable(habilita);
+        this.txtQuantidade.setEditable(habilita);
+        this.listAtendente.setEditable(habilita);
+        this.listCliente.setEditable(habilita);
+        this.listItens.setEditable(habilita);
         this.btnAddItem.setEnabled(habilita);
-        this.btnAlterar.setEnabled(habilita);
         this.btnCadastrar.setEnabled(habilita);
         this.btnRemover.setEnabled(habilita);
+    }
+
+    @Override
+    protected void clearAll() {
+        super.clearAll(); 
+        this.tableModelComandaItem = new TableModelPadrao(new ComandaItem());
+        this.tbComandaItem.setModel(this.tableModelComandaItem);
     }
 
     public void setComanda(Comanda comanda) {
@@ -147,12 +154,11 @@ public class ViewCadastroComanda extends View {
         btnCadastrar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbComandaItem = new javax.swing.JTable();
         listItens = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         txtQuantidade = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
-        btnAlterar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         btnAddItem = new javax.swing.JButton();
@@ -189,8 +195,8 @@ public class ViewCadastroComanda extends View {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable2.setModel(tableModelComandaItem);
-        jScrollPane2.setViewportView(jTable2);
+        tbComandaItem.setModel(tableModelComandaItem);
+        jScrollPane2.setViewportView(tbComandaItem);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -212,8 +218,6 @@ public class ViewCadastroComanda extends View {
         jLabel6.setText("Item");
 
         jLabel7.setText("Quantidade");
-
-        btnAlterar.setText("Alterar");
 
         btnRemover.setText("Remover");
 
@@ -250,7 +254,6 @@ public class ViewCadastroComanda extends View {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnCadastrar)))
                             .addComponent(jLabel6)))
                     .addComponent(jSeparator1))
@@ -304,14 +307,7 @@ public class ViewCadastroComanda extends View {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAlterar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemover)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(listItens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -319,7 +315,13 @@ public class ViewCadastroComanda extends View {
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAddItem))))
+                            .addComponent(btnAddItem)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -331,7 +333,6 @@ public class ViewCadastroComanda extends View {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddItem;
-    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnRemover;
     private javax.swing.JLabel jLabel2;
@@ -346,10 +347,10 @@ public class ViewCadastroComanda extends View {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JComboBox<Atendente> listAtendente;
     private javax.swing.JComboBox<Cliente> listCliente;
     private javax.swing.JComboBox<Item> listItens;
+    private javax.swing.JTable tbComandaItem;
     private javax.swing.JFormattedTextField txtData;
     private javax.swing.JFormattedTextField txtMesa;
     private javax.swing.JFormattedTextField txtQuantidade;

@@ -107,7 +107,7 @@ public class ViewCadastroSolicitacaoAbastecimento extends View {
     
     @Override
     protected void clearAll() {
-        super.clearAll();
+        super.clearAll();   
         this.tableModelSolicitacaoItens = new TableModelPadrao(new AbastecimentoItem());
         this.tbSolicitacaoItens.setModel(this.tableModelSolicitacaoItens);
     }
