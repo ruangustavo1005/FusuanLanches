@@ -179,4 +179,8 @@ public class ControllerComanda extends Controller{
         return abertas;
     }
 
+    public Comanda getComanda(int i) {
+        return this.comandas.get(i);
+    }
+    
 }
