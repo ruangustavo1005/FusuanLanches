@@ -1,12 +1,13 @@
 package model;
 
+import interfaces.ListagemParcial;
 import java.util.ArrayList;
 
 /**
  * Modelo de comanda
  * @author Ruan
  */
-public class Comanda {
+public class Comanda implements ListagemParcial {
     
     private int                    numero;
     private Atendente              atendente;
@@ -88,6 +89,13 @@ public class Comanda {
     @Override
     public String toString() {
         return numero + "";
+    }
+    
+    @Override
+    public ArrayList<String> getCamposIgnorar() {
+        ArrayList<String> campos = new ArrayList<>();
+        campos.add("aberto");
+        return campos;
     }
     
 }
