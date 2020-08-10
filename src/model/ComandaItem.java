@@ -17,16 +17,16 @@ public class ComandaItem implements ListagemParcial {
      * Cada item da comanda vai ter seu valor por que podem ser adicioandos descontos na hora da venda.
      * O valor do item que é salvo nele é apenas o valor base pra este.
      */
-    private float   valor;
+//    private float   valor;
 
     public ComandaItem() {
     }
 
-    public ComandaItem(Item item, Comanda comanda, int quantidade, float valor) {
+    public ComandaItem(Item item, Comanda comanda, int quantidade/*, float valor*/) {
         this.item = item;
         this.comanda = comanda;
         this.quantidade = quantidade;
-        this.valor = valor;
+//        this.valor = valor;
     }
 
     public Item getItem() {
@@ -53,17 +53,17 @@ public class ComandaItem implements ListagemParcial {
         this.quantidade = quantidade;
     }
 
-    public float getValor() {
-        return valor;
-    }
-
-    public void setValor(float valor) {
-        this.valor = valor;
-    }
+//    public float getValor() {
+//        return valor;
+//    }
+//
+//    public void setValor(float valor) {
+//        this.valor = valor;
+//    }
 
     @Override
     public String toString() {
-        return "ComandaItem: Item: " + item + ", Comanda: " + comanda + ", Quantidade: " + quantidade + ", Valor: " + valor;
+        return "ComandaItem: Item: " + item + ", Comanda: " + comanda + ", Quantidade: " + quantidade/* + ", Valor: " + valor*/;
     }
 
     @Override
